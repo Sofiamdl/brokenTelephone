@@ -11,6 +11,7 @@
 		BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28801D29C8CE8000036B84 /* ContentView.swift */; };
 		BF28802029C8CE8000036B84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28801F29C8CE8000036B84 /* Assets.xcassets */; };
 		BF28802329C8CE8000036B84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28802229C8CE8000036B84 /* Preview Assets.xcassets */; };
+		BF28802E29C8E66D00036B84 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = BF28802D29C8E66D00036B84 /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF28802E29C8E66D00036B84 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = client;
+			packageProductDependencies = (
+				BF28802D29C8E66D00036B84 /* SocketIO */,
+			);
 			productName = client;
 			productReference = BF28801829C8CE8000036B84 /* client.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = BF28800F29C8CE8000036B84;
+			packageReferences = (
+				BF28802C29C8E66D00036B84 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+			);
 			productRefGroup = BF28801929C8CE8000036B84 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +347,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF28802C29C8E66D00036B84 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF28802D29C8E66D00036B84 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF28802C29C8E66D00036B84 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF28801029C8CE8000036B84 /* Project object */;
 }
