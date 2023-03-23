@@ -76,12 +76,7 @@ app.delete ("/user/:id", async (request, reply) => {
 })
 */
 
-import fastify from "fastify";
-import { appRoutes } from "./http/router";
-
-export const app = fastify()
-
-app.register(appRoutes);
+import { app } from "./app"
 
 app.listen({
     host: "0.0.0.0",
