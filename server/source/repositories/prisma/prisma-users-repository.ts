@@ -3,9 +3,7 @@ import { IUsersRepository } from "../users-repository";
 import { prisma } from "../../lib/prisma";
 
 export class PrismaUsersRepository implements IUsersRepository {
-    async findByIdAndToken(id: string, token: string) {
-        console.log(id)
-        console.log(token)
+    async findById(id: string) {
 
         const user = await prisma.user.findFirst({
             where: {

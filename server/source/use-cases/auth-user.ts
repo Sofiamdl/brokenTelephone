@@ -1,4 +1,4 @@
-import { Prisma, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { IUsersRepository } from "../repositories/users-repository";
 import { compare, hash } from "bcryptjs";
 
@@ -24,7 +24,7 @@ export class AuthUseCase {
     }: IAuthUseCaseRequest): Promise<IAuthUseCaseResponse> {
         const token_hash = await hash(token, 6);
 
-        const existingUser = await this.usersRepository.findByIdAndToken(id, token_hash);
+        const existingUser = await this.usersRepository.findById(id);
 
         if(existingUser) {
             console.log("HERE")
