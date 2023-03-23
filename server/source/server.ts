@@ -1,8 +1,10 @@
+/*
 import fastify from "fastify";
 import { z } from "zod";
-import { Prisma, User } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import { PrismaClient } from "@prisma/client";
+
 
 export const prisma = new PrismaClient({
     log: ["query"],
@@ -72,6 +74,14 @@ app.delete ("/user/:id", async (request, reply) => {
     return reply.status(200).send("User deleted succesfully")
 
 })
+*/
+
+import fastify from "fastify";
+import { appRoutes } from "./http/router";
+
+export const app = fastify()
+
+app.register(appRoutes);
 
 app.listen({
     host: "0.0.0.0",
