@@ -12,13 +12,13 @@ export interface IGameRoom {
 }
 
 export interface IGamesInterface {
-    createRoom(IgameRoom: IGameRoom, host: IGameUser): Promise<IGameRoom>;
+    createRoom(code: string, host: IGameUser): Promise<IGameRoom>;
     findRoomByCode(code: string): Promise<IGameRoom | null>;
-    removeIGameRoom(IgameRoomId: string): Promise<IGameRoom>;
+    removeGameRoom(gameRoomId: string): Promise<IGameRoom>;
     
-    addUserToIGameRoom(user: IGameUser, IgameRoomId: string): Promise<IGameRoom>;
-    findUserInRoom(userId: string, IgameRoomId: string): Promise<IGameUser | null>;
-    removeUserFromIGameRoom(userId: string, gameId: string): Promise<IGameRoom>;
+    addUserToGameRoom(user: IGameUser, gameRoomId: string): Promise<IGameRoom>;
+    findUserInRoom(userId: string, gameRoomId: string): Promise<IGameUser | null>;
+    removeUserFromGameRoom(userId: string, gameId: string): Promise<IGameRoom>;
     
     updateUserScore(userId: string, newScore: number): Promise<IGameUser>;
 }
