@@ -10,7 +10,7 @@ export interface IThreadObject {
     
 }
 
-export interface IPhrasesRepository {
+export interface IThreadsRepository {
     createRoomThreads(users: string[]): Promise<IThreadObject>
     addGameObjectToThread(userId: string, gameObject: IGameObject): Promise<IThreadObject>
     findThreadByUserId(userId: string): Promise<IGameObject[]>
