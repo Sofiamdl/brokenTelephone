@@ -3,6 +3,7 @@ export interface IGameUser {
     name: string
     id: string
     score: number
+    roomCode: string
 }
 
 export interface IGameRoom {
@@ -12,13 +13,13 @@ export interface IGameRoom {
 }
 
 export interface IGamesInterface {
-    createRoom(code: string, host: IGameUser): Promise<IGameRoom>;
-    findRoomByCode(code: string): Promise<IGameRoom | null>;
-    removeGameRoom(gameRoomId: string): Promise<IGameRoom>;
+    createRoom(gameRoomCode: string, host: IGameUser): Promise<IGameRoom>;
+    findRoomByCode(gameRoomCode: string): Promise<IGameRoom | null>;
+    removeGameRoom(gameRoomCode: string): Promise<IGameRoom>;
     
-    addUserToGameRoom(user: IGameUser, gameRoomId: string): Promise<IGameRoom>;
-    findUserInRoom(userId: string, gameRoomId: string): Promise<IGameUser | null>;
-    removeUserFromGameRoom(userId: string, gameId: string): Promise<IGameRoom>;
+    addUserToGameRoom(user: IGameUser, gameRoomCode: string): Promise<IGameRoom>;
+    findUserInRoom(userId: string, gameRoomCode: string): Promise<IGameUser | null>;
+    removeUserFromGameRoom(userId: string, gameRoomCode: string): Promise<IGameRoom>;
     
-    updateUserScore(userId: string, newScore: number): Promise<IGameUser>;
+    saveGameUser(user: IGameUser): Promise<IGameUser>;
 }
