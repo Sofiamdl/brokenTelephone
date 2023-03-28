@@ -1,6 +1,6 @@
-import { IGameRoom, IGamesInterface, IGameUser } from "../games-repository"
+import { IGameRoom, IGamesRepository, IGameUser } from "../games-repository"
 
-export class InMemoryGamesRepository implements IGamesInterface {
+export class InMemoryGamesRepository implements IGamesRepository {
     public gameRooms: IGameRoom[] = [];
 
     async createRoom(gameRoomCode: string, host: IGameUser) {
@@ -11,6 +11,8 @@ export class InMemoryGamesRepository implements IGamesInterface {
         }
         
         this.gameRooms.push(newGameRoom);
+
+        console.log(this.gameRooms);
 
         return newGameRoom;
     }
@@ -79,6 +81,8 @@ export class InMemoryGamesRepository implements IGamesInterface {
         }
 
         this.gameRooms[gameRoomIndex].users.push(user);
+
+        console.log(this.gameRooms);
 
         return this.gameRooms[gameRoomIndex];
     }

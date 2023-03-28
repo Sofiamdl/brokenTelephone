@@ -12,7 +12,7 @@ export interface IGameRoom {
     users: IGameUser[];
 }
 
-export interface IGamesInterface {
+export interface IGamesRepository {
     createRoom(gameRoomCode: string, host: IGameUser): Promise<IGameRoom>;
     findRoomByCode(gameRoomCode: string): Promise<IGameRoom | null>;
     removeGameRoom(gameRoomCode: string): Promise<IGameRoom>;
