@@ -1,6 +1,6 @@
-import { IPhrasesRepository, IGameObject, IThreadObject } from "../phrases-repository";
+import { IThreadsRepository, IGameObject, IThreadObject } from "../threads-repository";
 
-export class InMemoryPhrasesRepository implements IPhrasesRepository {
+export class InMemoryThreadRepository implements IThreadsRepository {
     public threads: IThreadObject = {};
 
     async createRoomThreads(users: string[]) {
