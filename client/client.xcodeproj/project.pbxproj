@@ -8,18 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28801B29C8CE8000036B84 /* clientApp.swift */; };
-		BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28801D29C8CE8000036B84 /* ContentView.swift */; };
 		BF28802029C8CE8000036B84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28801F29C8CE8000036B84 /* Assets.xcassets */; };
 		BF28802329C8CE8000036B84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28802229C8CE8000036B84 /* Preview Assets.xcassets */; };
 		BF28802E29C8E66D00036B84 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = BF28802D29C8E66D00036B84 /* SocketIO */; };
+		BF28804929D3C19500036B84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804629D3C19500036B84 /* ContentView.swift */; };
+		BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804729D3C19500036B84 /* ContentViewModel.swift */; };
+		BF28804E29D3C25B00036B84 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804D29D3C25B00036B84 /* Color.swift */; };
+		BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805429D3C61200036B84 /* SocketViewModel.swift */; };
+		BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805729D3CE8800036B84 /* AppNavigation.swift */; };
+		BF28805B29D3CF7200036B84 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805A29D3CF7200036B84 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF28801829C8CE8000036B84 /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF28801B29C8CE8000036B84 /* clientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clientApp.swift; sourceTree = "<group>"; };
-		BF28801D29C8CE8000036B84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF28801F29C8CE8000036B84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF28802229C8CE8000036B84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF28804629D3C19500036B84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF28804729D3C19500036B84 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		BF28804D29D3C25B00036B84 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BF28805429D3C61200036B84 /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
+		BF28805729D3CE8800036B84 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
+		BF28805A29D3CF7200036B84 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +63,10 @@
 		BF28801A29C8CE8000036B84 /* client */ = {
 			isa = PBXGroup;
 			children = (
+				BF28805329D3C5FF00036B84 /* ViewModels */,
+				BF28804C29D3C22000036B84 /* Extensions */,
+				BF28803E29D3C10D00036B84 /* Views */,
 				BF28801B29C8CE8000036B84 /* clientApp.swift */,
-				BF28801D29C8CE8000036B84 /* ContentView.swift */,
 				BF28801F29C8CE8000036B84 /* Assets.xcassets */,
 				BF28802129C8CE8000036B84 /* Preview Content */,
 			);
@@ -67,6 +79,65 @@
 				BF28802229C8CE8000036B84 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF28803E29D3C10D00036B84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF28805629D3CE5E00036B84 /* Navigation */,
+				BF28805129D3C36400036B84 /* Components */,
+				BF28805029D3C35800036B84 /* Core */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF28803F29D3C11700036B84 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				BF28804629D3C19500036B84 /* ContentView.swift */,
+				BF28804729D3C19500036B84 /* ContentViewModel.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		BF28804C29D3C22000036B84 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BF28804D29D3C25B00036B84 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BF28805029D3C35800036B84 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BF28803F29D3C11700036B84 /* ContentView */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BF28805129D3C36400036B84 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BF28805329D3C5FF00036B84 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BF28805429D3C61200036B84 /* SocketViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BF28805629D3CE5E00036B84 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				BF28805729D3CE8800036B84 /* AppNavigation.swift */,
+				BF28805A29D3CF7200036B84 /* Route.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +216,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */,
+				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
+				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
+				BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */,
+				BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */,
+				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
+				BF28804929D3C19500036B84 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
