@@ -14,9 +14,14 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+                .font(projectFont(style: .light, size: 30))
+                .foregroundColor(Color("ProjectRed"))
         }
         .padding()
+        
+        
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
