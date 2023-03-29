@@ -81,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				BC505CF129D4B27A00D4A5F7 /* Info.plist */,
-				BCB9048529D4B0A80021E691 /* Fonts */,
 				BF28805329D3C5FF00036B84 /* ViewModels */,
 				BF28804C29D3C22000036B84 /* Extensions */,
 				BF28803E29D3C10D00036B84 /* Views */,
@@ -122,6 +121,7 @@
 		BF28804C29D3C22000036B84 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BCB9048529D4B0A80021E691 /* Fonts */,
 				BF28804D29D3C25B00036B84 /* Color.swift */,
 			);
 			path = Extensions;
@@ -238,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
-				BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */,
 				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
 				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
