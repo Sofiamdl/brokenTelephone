@@ -11,7 +11,12 @@ import SwiftUI
 struct ContentView: View {
 
     @ObservedObject private var viewModel = ContentViewModel()
+    @EnvironmentObject private var coordinator: Coordinator
+
     
+//    var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]
+
+    //    var wholeCode: String
     var body: some View {
         Color.homePageBackground
             .ignoresSafeArea()
@@ -38,7 +43,9 @@ struct ContentView: View {
                             .font(projectFont(style: .light, size: 24))
                             .foregroundColor(.fontColor)
                             
-                            OrangeButton(buttonLabel: "Criar sala")
+                            OrangeButton(buttonLabel: "Criar sala", buttonAction: {
+                                coordinator.goToLoadingPage()
+                            })
                             
                         }
                         .frame(width: 400, alignment: .center)
@@ -51,35 +58,36 @@ struct ContentView: View {
                                 
                                         ForEach((0...3), id: \.self) { field in
 
-                                            RoomCodeTextfield()
+                                            viewModel.roomCodeArray[field]
+                                                    
+                                                    
+                                                    
+                                                    
+                                            
 
                                     }
                                         .frame(width: 58, height: 58, alignment: .center)
 
                                 }
                             
-                            OrangeButton(buttonLabel: "Entrar")
+                            OrangeButton(buttonLabel: "Entrar", buttonAction: {
+                               let finalCode = viewModel.returnFinalCode()
+                                print(finalCode)
+                                coordinator.goToLoadingPage()
+                                print("oi")
+                                
+                            })
                             
                             Spacer()
                         }
                         .frame(width: 400, alignment: .center)
-                        
-                        
-                        
-                        
-                    
-                    
                     
                     }
-                    
-                        
+         
                 }
                     .padding(15)
             )
-        
-        
-        
-        
+ 
     }
 
 }

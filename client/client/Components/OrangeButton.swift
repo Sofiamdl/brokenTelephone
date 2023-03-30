@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct OrangeButton: View {
-    @State var buttonLabel: String = ""
+    var buttonLabel: String = ""
+    var buttonAction: () -> Void
     
     var body: some View {
         ZStack{
-            Button(action: {
-                print("oie")
+            Button(action:  {
+                buttonAction()
             }){
                 Text(self.buttonLabel)
                     .font(projectFont(style: .extraBold, size: 24))
@@ -34,8 +35,8 @@ struct OrangeButton: View {
     
     
 }
-struct ButtonContent_Previews: PreviewProvider {
-    static var previews: some View {
-        OrangeButton()
-    }
-}
+//struct ButtonContent_Previews: PreviewProvider {
+//    static var previews: some View {
+////        OrangeButton()
+//    }
+//}

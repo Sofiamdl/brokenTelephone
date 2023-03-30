@@ -8,12 +8,14 @@
 import SwiftUI
 import Charts
 
-struct AppCore: View {
-            
+struct AppNavigation: View {
+    @ObservedObject var coordinator = Coordinator()
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $coordinator.path) {
             selectScreen
         }
+        .environmentObject(coordinator)
     }
     
     private var selectScreen: some View {
@@ -22,6 +24,8 @@ struct AppCore: View {
                 switch route {
                 case .home:
                     ContentView()
+                case .loadingRoom:
+                    LoadingRoomView()
                 }
             }
     }
