@@ -27,7 +27,7 @@
 /* Begin PBXFileReference section */
 		BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
-		BC505CF129D4B27A00D4A5F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC505CF129D4B27A00D4A5F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC505CF229D4B3CA00D4A5F7 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		BCECABFD29D4DD4700615452 /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 		BCECAC0129D501CD00615452 /* CodeTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextfield.swift; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		BF28801A29C8CE8000036B84 /* client */ = {
 			isa = PBXGroup;
 			children = (
-				BCECABFC29D4DD1E00615452 /* Components */,
 				BC505CF129D4B27A00D4A5F7 /* Info.plist */,
+				BCECABFC29D4DD1E00615452 /* Components */,
 				BF28805329D3C5FF00036B84 /* ViewModels */,
 				BF28804C29D3C22000036B84 /* Extensions */,
 				BF28803E29D3C10D00036B84 /* Views */,

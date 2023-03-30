@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RoomCodeTextfield: View {
-    @State var roomCode: String = ""
-   
+    @ObservedObject var textBindingManager = TextBindingManager(limit: 1)
+
    
     var body: some View {
             
@@ -19,7 +19,7 @@ struct RoomCodeTextfield: View {
 
     //                                            .frame(width: 58, height: 58, alignment: .center)
                 .overlay(
-                    TextField("codigo", text: $roomCode, prompt: Text("a") )
+                    TextField("codigo", text: $textBindingManager.text, prompt: Text("a") )
                             .font(projectFont(style: .extraBold, size: 24 ))
                             .frame(width: 58, height: 58, alignment: .center)
     //                        .padding(.all, -20)
@@ -27,12 +27,24 @@ struct RoomCodeTextfield: View {
                 )
         }
         
-//            .frame(width: 58, height: 58, alignment: .center)
+  
+    
+    
+}
 
-        
-    
-    
-    
+class TextBindingManager: ObservableObject {
+    @Published var text = "" {
+        didSet {
+            if text.count > characterLimit && oldValue.count <= characterLimit {
+                text = oldValue
+            }
+        }
+    }
+    let characterLimit: Int
+
+    init(limit: Int = 5){
+        characterLimit = limit
+    }
 }
 
 struct TxtfieldContent_Previews: PreviewProvider {
