@@ -10,6 +10,7 @@ import { createRoom } from "./controllers/create-room";
 import { joinRoom } from "./controllers/join-room";
 import { play } from "./controllers/play";
 import { GameIndexCalculator } from "../utilities/game-index-calculator";
+import { gameDrawing } from "./controllers/game-drawing";
 
 
 
@@ -42,19 +43,7 @@ export async function createGameRooms(app: FastifyInstance)  {
             })
 
             socket.on("game-drawing", async function(data) {
-                const gameObject: IGameObject = {
-                    data,
-                    type: "drawing",
-                    userId: socket.id,
-                }
-
-                const room = await gameRepository.findRoomByUserId(socket.id);
-
-                const userIndex = room.users.findIndex(item => item.id === socket.id);
-                
-                const parentThread = gameIndexCalculator.getParentThreadIndex(room.round, room.users.length, userIndex);
-
-                threadRepository.addGameObjectToThread(room.users[parentThread].id, gameObject);
+                gameDrawing(socket, gameRepository, threadRepository, gameIndexCalculator, data);
             })
         })
 
