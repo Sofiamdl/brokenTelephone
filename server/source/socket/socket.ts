@@ -42,8 +42,8 @@ export async function createGameRooms(app: FastifyInstance)  {
                 play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
             })
 
-            socket.on("game-drawing", async function(data) {
-                gameDrawing(socket, gameRepository, threadRepository, gameIndexCalculator, data);
+            socket.on("server-drawing", async function(data) {
+                gameDrawing(socket, gameRepository, threadRepository, gameIndexCalculator, data, app.io);
             })
         })
 
