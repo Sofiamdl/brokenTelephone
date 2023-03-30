@@ -16,6 +16,7 @@ export interface IGamesRepository {
     createRoom(gameRoomCode: string, host: IGameUser): Promise<IGameRoom>;
     findRoomByCode(gameRoomCode: string): Promise<IGameRoom | null>;
     removeGameRoom(gameRoomCode: string): Promise<IGameRoom>;
+    findRoomByUserId(userId: string): Promise<IGameRoom | null>;
     
     addUserToGameRoom(user: IGameUser, gameRoomCode: string): Promise<IGameRoom>;
     findUserInRoom(userId: string, gameRoomCode: string): Promise<IGameUser | null>;

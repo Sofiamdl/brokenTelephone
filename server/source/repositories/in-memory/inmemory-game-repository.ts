@@ -41,6 +41,16 @@ export class InMemoryGamesRepository implements IGamesRepository {
         return deletedRoom;
     }
 
+    async findRoomByUserId(userId: string) {
+        const room = this.gameRooms.find(item => item.users.some(user => user.id === userId));
+
+        if(!room) {
+            return null;
+        }
+
+        return room;
+    }
+
     async findUserInRoom(userId: string, gameRoomCode: string) {
         const gameRoom = this.gameRooms.find(item => item.code === gameRoomCode);
 
