@@ -7,6 +7,11 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
     const roomCode = data;
 
     const room = await gameRepository.findRoomByCode(roomCode)
+    
+    if(!room) {
+        throw new Error("Bad request")
+    }
+
     const users = room.users
 
     const usersIds = users.map(({id}) => id)

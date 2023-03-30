@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import fastifySocketIO from "fastify-socket.io";
 import { IGamesRepository } from "../repositories/games-repository";
 import { InMemoryGamesRepository } from "../repositories/in-memory/inmemory-game-repository";
-import { IThreadsRepository } from "../repositories/threads-repository";
+import { IGameObject, IThreadsRepository } from "../repositories/threads-repository";
 import { InMemoryThreadRepository } from "../repositories/in-memory/inmemory-threads-repository";
 import { IPhrasesRepository } from "../repositories/phrases-repository";
 import { InMemoryPhrasesRepository } from "../repositories/in-memory/inmemory-phrases-repository";
@@ -39,7 +39,22 @@ export async function createGameRooms(app: FastifyInstance)  {
             socket.on("play", function(data) {
                 play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
             })
+
+            socket.on("game-drawing", function(data) {
+                const gameObject: IGameObject = {
+                    data,
+                    type: "drawing",
+                    userId: socket.id,
+                }
+
+                threadRepository.addGameObjectToThread(socket.id, gameObject);
+            })
         })
 
     })
 }
+/*
+IDA: (idx + round) mod (qtd users)
+VOLTA: (idx - round)
+        if (volta < 0) -> volta = users.length + volta
+*/
