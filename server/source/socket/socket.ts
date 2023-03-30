@@ -6,10 +6,10 @@ import { IGameObject, IThreadsRepository } from "../repositories/threads-reposit
 import { InMemoryThreadRepository } from "../repositories/in-memory/inmemory-threads-repository";
 import { IPhrasesRepository } from "../repositories/phrases-repository";
 import { InMemoryPhrasesRepository } from "../repositories/in-memory/inmemory-phrases-repository";
-import { generateRandomRoomCode } from "../utilities/generateRandomRoomCode";
 import { createRoom } from "./controllers/create-room";
 import { joinRoom } from "./controllers/join-room";
 import { play } from "./controllers/play";
+import { GameIndexCalculator } from "../utilities/game-index-calculator";
 
 
 
@@ -19,6 +19,7 @@ export async function createGameRooms(app: FastifyInstance)  {
     const gameRepository: IGamesRepository = new InMemoryGamesRepository();
     const threadRepository: IThreadsRepository = new InMemoryThreadRepository();
     const phrasesRepository: IPhrasesRepository = new InMemoryPhrasesRepository();
+    const gameIndexCalculator: GameIndexCalculator = new GameIndexCalculator();
 
     app.ready(err => {
         if (err) {
@@ -40,14 +41,20 @@ export async function createGameRooms(app: FastifyInstance)  {
                 play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
             })
 
-            socket.on("game-drawing", function(data) {
+            socket.on("game-drawing", async function(data) {
                 const gameObject: IGameObject = {
                     data,
                     type: "drawing",
                     userId: socket.id,
                 }
 
-                threadRepository.addGameObjectToThread(socket.id, gameObject);
+                const room = await gameRepository.findRoomByUserId(socket.id);
+
+                const userIndex = room.users.findIndex(item => item.id === socket.id);
+                
+                const parentThread = gameIndexCalculator.getParentThreadIndex(room.round, room.users.length, userIndex);
+
+                threadRepository.addGameObjectToThread(room.users[parentThread].id, gameObject);
             })
         })
 
