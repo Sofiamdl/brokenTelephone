@@ -15,6 +15,8 @@ export class InMemoryThreadRepository implements IThreadsRepository {
     async addGameObjectToThread(userId: string, gameObject: IGameObject) {
         this.threads[userId].push(gameObject);
 
+        console.log(this.threads);
+
         return this.threads;
     }
 
