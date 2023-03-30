@@ -24,4 +24,6 @@ export interface IGamesRepository {
     removeUserFromGameRoom(userId: string, gameRoomCode: string): Promise<IGameRoom>;
     
     saveGameUser(user: IGameUser): Promise<IGameUser>;
+
+    incrementGameRoomRound(gameRoomCode: string): Promise<IGameRoom>;
 }

@@ -124,4 +124,16 @@ export class InMemoryGamesRepository implements IGamesRepository {
 
         return this.gameRooms[gameRoomIndex];
     }
+
+    async incrementGameRoomRound(gameRoomCode: string) {
+        const roomIndex = this.gameRooms.findIndex(gameRoom => gameRoom.code === gameRoomCode)
+
+        if (roomIndex < 0) {
+            throw new Error();
+        }
+
+        this.gameRooms[roomIndex].round++
+
+        return this.gameRooms[roomIndex]
+    }
 }

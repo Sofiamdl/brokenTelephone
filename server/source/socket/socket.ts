@@ -10,7 +10,8 @@ import { createRoom } from "./controllers/create-room";
 import { joinRoom } from "./controllers/join-room";
 import { play } from "./controllers/play";
 import { GameIndexCalculator } from "../utilities/game-index-calculator";
-import { gameDrawing } from "./controllers/game-drawing";
+import { game } from "./controllers/game";
+import { hostTimeout } from "./controllers/timeout";
 
 
 
@@ -42,15 +43,16 @@ export async function createGameRooms(app: FastifyInstance)  {
                 play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
             })
 
-            socket.on("server-drawing", async function(data) {
-                gameDrawing(socket, gameRepository, threadRepository, gameIndexCalculator, data, app.io);
+            socket.on("game", async function(data) {
+                game(socket, gameRepository, threadRepository, gameIndexCalculator, data, app.io);
             })
+
+            socket.on("host-timeout", async function(data) {
+                hostTimeout(socket, gameRepository, threadRepository, gameIndexCalculator, data, app.io);
+            })
+
+
         })
 
     })
 }
-/*
-IDA: (idx + round) mod (qtd users)
-VOLTA: (idx - round)
-        if (volta < 0) -> volta = users.length + volta
-*/
