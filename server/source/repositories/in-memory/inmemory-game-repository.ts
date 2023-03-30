@@ -18,7 +18,9 @@ export class InMemoryGamesRepository implements IGamesRepository {
     }
 
     async findRoomByCode(gameRoomCode: string) {
+        console.log(gameRoomCode)
         const room = this.gameRooms.find(item => item.code === gameRoomCode);
+        console.log(room)
 
         if (!room) {
             return null;

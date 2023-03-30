@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B2746CA29D4BF6E00C60BCF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2746C929D4BF6E00C60BCF /* LoginView.swift */; };
 		5B2746CD29D4C0EA00C60BCF /* SentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2746CC29D4C0EA00C60BCF /* SentUser.swift */; };
+		BC505CEF29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */; };
+		BC505CF029D4B1A400D4A5F7 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */; };
+		BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC505CF229D4B3CA00D4A5F7 /* CustomFont.swift */; };
 		BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28801B29C8CE8000036B84 /* clientApp.swift */; };
 		BF28802029C8CE8000036B84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28801F29C8CE8000036B84 /* Assets.xcassets */; };
 		BF28802329C8CE8000036B84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28802229C8CE8000036B84 /* Preview Assets.xcassets */; };
@@ -25,6 +28,10 @@
 		5B2746C829D4BF5700C60BCF /* client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = client.entitlements; sourceTree = "<group>"; };
 		5B2746C929D4BF6E00C60BCF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5B2746CC29D4C0EA00C60BCF /* SentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentUser.swift; sourceTree = "<group>"; };
+		BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
+		BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
+		BC505CF129D4B27A00D4A5F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC505CF229D4B3CA00D4A5F7 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		BF28801829C8CE8000036B84 /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF28801B29C8CE8000036B84 /* clientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clientApp.swift; sourceTree = "<group>"; };
 		BF28801F29C8CE8000036B84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +64,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BCB9048529D4B0A80021E691 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */,
+				BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */,
+				BC505CF229D4B3CA00D4A5F7 /* CustomFont.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		BF28800F29C8CE8000036B84 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +95,8 @@
 			children = (
 				5B2746CB29D4BFD900C60BCF /* Models */,
 				5B2746C829D4BF5700C60BCF /* client.entitlements */,
+				BC505CF129D4B27A00D4A5F7 /* Info.plist */,
+				BCB9048529D4B0A80021E691 /* Fonts */,
 				BF28805329D3C5FF00036B84 /* ViewModels */,
 				BF28804C29D3C22000036B84 /* Extensions */,
 				BF28803E29D3C10D00036B84 /* Views */,
@@ -222,6 +241,8 @@
 			files = (
 				BF28802329C8CE8000036B84 /* Preview Assets.xcassets in Resources */,
 				BF28802029C8CE8000036B84 /* Assets.xcassets in Resources */,
+				BC505CF029D4B1A400D4A5F7 /* Gilroy-Light.otf in Resources */,
+				BC505CEF29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +254,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2746CD29D4C0EA00C60BCF /* SentUser.swift in Sources */,
+				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
+				BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */,
 				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
 				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
@@ -373,6 +396,7 @@
 				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = client/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -402,6 +426,7 @@
 				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = client/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

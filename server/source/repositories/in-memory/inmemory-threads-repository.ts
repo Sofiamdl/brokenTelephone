@@ -8,7 +8,7 @@ export class InMemoryThreadRepository implements IThreadsRepository {
 
             this.threads[user] = []
         }
-
+        
         return this.threads;
     }
 
