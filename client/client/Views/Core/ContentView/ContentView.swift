@@ -12,11 +12,14 @@ struct ContentView: View {
 
     @ObservedObject private var viewModel = ContentViewModel()
     @EnvironmentObject private var coordinator: Coordinator
+    @FocusState private var focusedField: Field?
+    
+    var field = 0
+    
+    
 
     
-//    var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]
 
-    //    var wholeCode: String
     var body: some View {
         Color.homePageBackground
             .ignoresSafeArea()
@@ -59,22 +62,36 @@ struct ContentView: View {
                                         ForEach((0...3), id: \.self) { field in
 
                                             viewModel.roomCodeArray[field]
+                                                .focused($focusedField, equals: viewModel.fieldArray[field])
+                                                .onSubmit {
+                                                    
+                                                    if focusedField != viewModel.fieldArray[3]{
+                                                        focusedField = viewModel.fieldArray[field + 1]
+                                                    }
                                                     
                                                     
-                                                    
-                                                    
-                                            
+                                                }
+                                       
 
                                     }
                                         .frame(width: 58, height: 58, alignment: .center)
 
+
                                 }
+                                
                             
                             OrangeButton(buttonLabel: "Entrar", buttonAction: {
                                let finalCode = viewModel.returnFinalCode()
+                                let isFieldValid = viewModel.isFieldValid()
                                 print(finalCode)
-                                coordinator.goToLoadingPage()
-                                print("oi")
+                                if isFieldValid {
+                                    coordinator.goToLoadingPage()
+                                    print("oi")
+                                } else {
+//                                    Alert(title: "Por favor, preencha o campo", dismissButton: .default(<#T##label: Text##Text#>))
+                                }
+                                
+                               
                                 
                             })
                             
