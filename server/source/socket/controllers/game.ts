@@ -22,7 +22,5 @@ export async function game(socket: Socket, gameRepository: IGamesRepository, thr
 
     io.to(room.users[nextIndex].id).emit((room.round % 2) === 0 ? "client": "client", data);
     
-    const { round } = await gameRepository.incrementGameRoomRound(room.code);
-
 }
 

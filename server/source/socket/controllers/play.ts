@@ -28,6 +28,5 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
 
     io.to(roomCode).emit("start-timer", "")
 
-    gameRepository.incrementGameRoomRound(roomCode)
 
 }
