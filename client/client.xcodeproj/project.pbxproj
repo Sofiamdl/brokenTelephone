@@ -20,6 +20,11 @@
 		BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805429D3C61200036B84 /* SocketViewModel.swift */; };
 		BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805729D3CE8800036B84 /* AppNavigation.swift */; };
 		BF28805B29D3CF7200036B84 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805A29D3CF7200036B84 /* Route.swift */; };
+		BF2C61B329DA0C32000C0B26 /* PodiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61B229DA0C32000C0B26 /* PodiumView.swift */; };
+		BF2C61B529DA0F2A000C0B26 /* PageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61B429DA0F2A000C0B26 /* PageBackground.swift */; };
+		BF2C61B729DA17EE000C0B26 /* ImagePhraseShown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61B629DA17EE000C0B26 /* ImagePhraseShown.swift */; };
+		BF2C61B929DA1C29000C0B26 /* PodiumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61B829DA1C29000C0B26 /* PodiumViewModel.swift */; };
+		BF2C61BD29DA1F53000C0B26 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61BC29DA1F53000C0B26 /* SFSymbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 		BF28805429D3C61200036B84 /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
 		BF28805729D3CE8800036B84 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
 		BF28805A29D3CF7200036B84 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		BF2C61B229DA0C32000C0B26 /* PodiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodiumView.swift; sourceTree = "<group>"; };
+		BF2C61B429DA0F2A000C0B26 /* PageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageBackground.swift; sourceTree = "<group>"; };
+		BF2C61B629DA17EE000C0B26 /* ImagePhraseShown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePhraseShown.swift; sourceTree = "<group>"; };
+		BF2C61B829DA1C29000C0B26 /* PodiumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodiumViewModel.swift; sourceTree = "<group>"; };
+		BF2C61BC29DA1F53000C0B26 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +140,7 @@
 		BF28805029D3C35800036B84 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BF2C61B129DA0C01000C0B26 /* PodiumView */,
 				BF28803F29D3C11700036B84 /* ContentView */,
 			);
 			path = Core;
@@ -138,6 +149,9 @@
 		BF28805129D3C36400036B84 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BF2C61B429DA0F2A000C0B26 /* PageBackground.swift */,
+				BF2C61B629DA17EE000C0B26 /* ImagePhraseShown.swift */,
+				BF2C61BC29DA1F53000C0B26 /* SFSymbol.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -157,6 +171,15 @@
 				BF28805A29D3CF7200036B84 /* Route.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BF2C61B129DA0C01000C0B26 /* PodiumView */ = {
+			isa = PBXGroup;
+			children = (
+				BF2C61B229DA0C32000C0B26 /* PodiumView.swift */,
+				BF2C61B829DA1C29000C0B26 /* PodiumViewModel.swift */,
+			);
+			path = PodiumView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +261,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
-				BF28801E29C8CE8000036B84 /* ContentView.swift in Sources */,
 				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
+				BF2C61BD29DA1F53000C0B26 /* SFSymbol.swift in Sources */,
+				BF2C61B929DA1C29000C0B26 /* PodiumViewModel.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
 				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
 				BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */,
 				BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */,
+				BF2C61B329DA0C32000C0B26 /* PodiumView.swift in Sources */,
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
+				BF2C61B729DA17EE000C0B26 /* ImagePhraseShown.swift in Sources */,
+				BF2C61B529DA0F2A000C0B26 /* PageBackground.swift in Sources */,
 				BF28804929D3C19500036B84 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
