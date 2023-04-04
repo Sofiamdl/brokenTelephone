@@ -18,7 +18,7 @@ struct ThreadView: View {
     var body: some View {
         ZStack {
             PageBackground(backFunction: viewModel.teste, nextFunction: viewModel.teste)
-            HStack{
+            HStack {
                 Group {
                     ScrollView {
                         ZStack {
@@ -28,7 +28,7 @@ struct ThreadView: View {
                                     Image("yellow-square")
                                 }
                             }
-                            .offset(y: 80)
+                            .offset(y: 180)
                             VStack (alignment: .leading) {
                                 Text("Vote no melhor momento")
                                     .font(projectFont(style: .extraBold, size: 30))
@@ -40,16 +40,37 @@ struct ThreadView: View {
                                     }
                                 }
                             }
-                            .offset(y: -200)
+                            .offset(y: -100)
                         }
-                    }
+                    }.frame(minWidth: 0, maxWidth: .infinity)
                 }
                 Group {
-                    TabView {
-                        Image("desenho-teste")
-                        Image("desenho-teste")
-                        Image("desenho-teste")
-                    }.tabViewStyle(PageTabViewStyle())
+                    VStack(alignment: .center) {
+                        Text("O personagem era:")
+                            .font(projectFont(style: .extraBold, size: 30))
+                            .foregroundColor(Color.fontColor)
+                            .offset(y: 128)
+                        TabView {
+                            VStack {
+                                Text("Mula sem cabeça")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                Image("desenho-teste")
+                            }
+                            VStack {
+                                Text("Mula sem cabeça")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                Image("desenho-teste")
+                            }
+                            VStack {
+                                Text("Mula sem cabeça")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                Image("desenho-teste")
+                            }
+                        }.tabViewStyle(PageTabViewStyle())
+                    }.frame(minWidth: 0, maxWidth: .infinity)
                 }
             }
         }
