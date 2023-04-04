@@ -16,8 +16,10 @@ struct ThreadView: View {
             HStack{
                 ScrollView {
                     VStack(alignment: .leading) {
-                        ForEach(0..<100) {
-                            Text("Row \($0)")
+                        ForEach(viewModel.threads, id: \.self) {thread in
+                            ForEach(thread.gameObjects, id: \.self) { gameObject in
+                                ImagePhraseShown(isImage: gameObject.isImage, info: gameObject.isImage == true ? "desenho-teste" : "jacare", isChosen: false)
+                            }
                         }
                     }
                 }

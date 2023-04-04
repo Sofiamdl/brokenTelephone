@@ -19,7 +19,6 @@ struct WinnersView: View {
                 Text("Parabéns,")
                     .font(projectFont(style: .extraBold, size: 40))
                     .foregroundColor(Color.fontColor)
-                Image
             }
         }
     }

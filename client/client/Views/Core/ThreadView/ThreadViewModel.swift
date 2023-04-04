@@ -7,21 +7,48 @@
 
 import SwiftUI
 
-struct GameObject {
-    let type: String
-    let data: String
+struct GameObject: Hashable {
+    var isImage: Bool
+    var data: String
 }
 
-struct Thread {
-    let threads: [GameObject]
+struct Thread: Hashable {
+    var gameObjects: [GameObject]
 }
 
 final class ThreadViewModel: ObservableObject {
-    @Published var threads: [Thread] = []
-
+    @Published var threads: [Thread] = [
+        Thread(gameObjects: [
+            GameObject(isImage: false, data: ""),
+            GameObject(isImage: true, data: ""),
+            GameObject(isImage: false, data: ""),
+            GameObject(isImage: true, data: ""),
+        ])
+    ]
     
-    
+    init() {
+        let pngData = UIImage(named: "desenho-teste")?.pngData()
+        let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
+        
+        for singleThread in threads {
+            for var gameObject in singleThread.gameObjects {
+                if gameObject.isImage {
+                    gameObject.data = strBase64 ?? ""
+                }
+            }
+        }
+    }
+        
     func teste() {
         print("back-next")
     }
 }
+
+var teste: [Thread] = [
+    Thread(gameObjects: [
+        GameObject(isImage: false, data: ""),
+        GameObject(isImage: true, data: ""),
+        GameObject(isImage: false, data: ""),
+        GameObject(isImage: true, data: ""),
+    ])
+]
