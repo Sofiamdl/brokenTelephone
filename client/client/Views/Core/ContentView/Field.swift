@@ -12,4 +12,5 @@ enum Field: Hashable {
     case secondCharacter
     case thirdCharacter
     case fourthCharacter
+    case dismissKeyboard
 }

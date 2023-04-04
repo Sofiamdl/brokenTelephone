@@ -14,7 +14,7 @@ final class ContentViewModel: ObservableObject {
     
     
     @Published var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]
-    @Published var fieldArray = [Field.firstCharacter, Field.secondCharacter, Field.thirdCharacter, Field.fourthCharacter]
+    @Published var fieldArray = [Field.firstCharacter, Field.secondCharacter, Field.thirdCharacter, Field.fourthCharacter, Field.dismissKeyboard]
     
     func returnFinalCode() -> String {
         let code = roomCodeMap()
