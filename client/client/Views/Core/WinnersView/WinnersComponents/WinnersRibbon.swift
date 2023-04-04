@@ -21,7 +21,7 @@ struct WinnersRibbon: View {
                 .frame(width: 200)
                 .cornerRadius(200)
                 .padding(.top, 10)
-            Image(teste())
+            Image(imageChooser())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
@@ -29,16 +29,39 @@ struct WinnersRibbon: View {
                 .rotationEffect(Angle(degrees: -35))
                 .padding(.top, -35)
                 .padding(.leading, -5)
+            VStack {
+                Text(textChooser())
+                    .font(projectFont(style: .extraBold, size: 40))
+                    .foregroundColor(Color.projectWhite)
+                    .padding(.top, 246)
+                    .padding(.leading, 20)
+                Text("\(votes) votos")
+                    .font(projectFont(style: .extraBold, size: 20))
+                    .foregroundColor(Color.projectWhite)
+            }
 
         }
     }
     
-    func teste() -> String {
+    func imageChooser() -> String {
         switch place {
         case .firstPlace:
             return "first-place"
-        default:
-            return "first-place"
+        case .secondPlace:
+            return "second-place"
+        case .thirdPlace:
+            return "third-place"
+        }
+    }
+    
+    func textChooser() -> String {
+        switch place {
+        case .firstPlace:
+            return "1º"
+        case .secondPlace:
+            return "2º"
+        case .thirdPlace:
+            return "3º"
         }
     }
 
