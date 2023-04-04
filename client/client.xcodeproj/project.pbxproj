@@ -27,6 +27,9 @@
 		BF2C61BD29DA1F53000C0B26 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61BC29DA1F53000C0B26 /* SFSymbol.swift */; };
 		BF2C61C529DBB6F5000C0B26 /* WinnersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61C229DBB6F5000C0B26 /* WinnersView.swift */; };
 		BF2C61C629DBB6F5000C0B26 /* WinnersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61C329DBB6F5000C0B26 /* WinnersViewModel.swift */; };
+		BF2C61CA29DBBD45000C0B26 /* WinnersRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61C929DBBD45000C0B26 /* WinnersRibbon.swift */; };
+		BF2C61CC29DBBFCA000C0B26 /* CircularText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61CB29DBBFCA000C0B26 /* CircularText.swift */; };
+		BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		BF2C61BC29DA1F53000C0B26 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		BF2C61C229DBB6F5000C0B26 /* WinnersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersView.swift; sourceTree = "<group>"; };
 		BF2C61C329DBB6F5000C0B26 /* WinnersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersViewModel.swift; sourceTree = "<group>"; };
+		BF2C61C929DBBD45000C0B26 /* WinnersRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersRibbon.swift; sourceTree = "<group>"; };
+		BF2C61CB29DBBFCA000C0B26 /* CircularText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularText.swift; sourceTree = "<group>"; };
+		BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +196,21 @@
 		BF2C61C129DBB6DB000C0B26 /* WinnersView */ = {
 			isa = PBXGroup;
 			children = (
+				BF2C61C829DBBD0E000C0B26 /* WinnersComponents */,
 				BF2C61C229DBB6F5000C0B26 /* WinnersView.swift */,
 				BF2C61C329DBB6F5000C0B26 /* WinnersViewModel.swift */,
 			);
 			path = WinnersView;
+			sourceTree = "<group>";
+		};
+		BF2C61C829DBBD0E000C0B26 /* WinnersComponents */ = {
+			isa = PBXGroup;
+			children = (
+				BF2C61C929DBBD45000C0B26 /* WinnersRibbon.swift */,
+				BF2C61CB29DBBFCA000C0B26 /* CircularText.swift */,
+				BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */,
+			);
+			path = WinnersComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +291,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2C61CA29DBBD45000C0B26 /* WinnersRibbon.swift in Sources */,
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
 				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
 				BF2C61C629DBB6F5000C0B26 /* WinnersViewModel.swift in Sources */,
 				BF2C61BD29DA1F53000C0B26 /* SFSymbol.swift in Sources */,
+				BF2C61CC29DBBFCA000C0B26 /* CircularText.swift in Sources */,
 				BF2C61B929DA1C29000C0B26 /* PodiumViewModel.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
 				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
@@ -286,6 +305,7 @@
 				BF2C61B329DA0C32000C0B26 /* PodiumView.swift in Sources */,
 				BF2C61C529DBB6F5000C0B26 /* WinnersView.swift in Sources */,
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
+				BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */,
 				BF2C61B729DA17EE000C0B26 /* ImagePhraseShown.swift in Sources */,
 				BF2C61B529DA0F2A000C0B26 /* PageBackground.swift in Sources */,
 				BF28804929D3C19500036B84 /* ContentView.swift in Sources */,

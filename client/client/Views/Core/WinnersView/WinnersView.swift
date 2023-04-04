@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct WinnersView: View {
-
     @ObservedObject private var viewModel = WinnersViewModel()
        
     var body: some View {
@@ -19,7 +18,14 @@ struct WinnersView: View {
                 Text("Parabéns,")
                     .font(projectFont(style: .extraBold, size: 40))
                     .foregroundColor(Color.fontColor)
-                Image
+                ZStack {
+                    Image("winners-background")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                    WinnersRibbon(winner: "Alguém", image: "cachorro-caramelo", place: .firstPlace, votes: "3")
+                 
+                }
             }
         }
     }
