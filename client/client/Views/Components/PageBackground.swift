@@ -19,6 +19,10 @@ struct PageBackground: View {
                         backFunction()
                     }) {
                         Image("left-top")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 250)
+
                     }
                 }
                 Spacer()
@@ -31,6 +35,9 @@ struct PageBackground: View {
                         nextFunction()
                     }) {
                         Image("right-bottom")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 300)
                     }
                 }
             }
