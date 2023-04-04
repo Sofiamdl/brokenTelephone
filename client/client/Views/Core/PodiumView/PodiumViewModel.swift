@@ -9,6 +9,8 @@ import SwiftUI
 
 
 final class PodiumViewModel: ObservableObject {
+    @Published var podiumElements = []
+    
     func teste() {
         print("back-next")
     }

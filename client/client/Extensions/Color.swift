@@ -12,4 +12,5 @@ extension Color {
     static let gameScreenBackground = Color("GameScreenBackgroundColor")
     static let projectWhite = Color("ProjectWhite")
     static let projectOrange = Color("ProjectOrange")
+    static let fontColor = Color("FontColor")
 }
