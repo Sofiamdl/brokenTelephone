@@ -26,8 +26,8 @@ struct WinnersRibbon: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250)
             CircleText(radius: 200, text: winner, kerning: 25)
-                .rotationEffect(Angle(degrees: -35))
-                .padding(.top, -35)
+                .rotationEffect(Angle(degrees: -25))
+                .padding(.top, -25)
                 .padding(.leading, -5)
             VStack {
                 Text(textChooser())

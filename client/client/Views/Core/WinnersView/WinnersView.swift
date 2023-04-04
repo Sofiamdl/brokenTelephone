@@ -25,11 +25,11 @@ struct WinnersView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
                     HStack {
-                        WinnersRibbon(winner: "Alguém", image: "cachorro-caramelo", place: .secondPlace, votes: "3")
+                        WinnersRibbon(winner: "Barreto", image: "cachorro-caramelo", place: .secondPlace, votes: "3")
                             .padding(.top, 100)
-                        WinnersRibbon(winner: "Alguém", image: "cachorro-caramelo", place: .firstPlace, votes: "3")
+                        WinnersRibbon(winner: "Laula", image: "cachorro-caramelo", place: .firstPlace, votes: "3")
                             .padding(.top, -40)
-                        WinnersRibbon(winner: "Alguém", image: "cachorro-caramelo", place: .thirdPlace, votes: "3")
+                        WinnersRibbon(winner: "Mavi", image: "cachorro-caramelo", place: .thirdPlace, votes: "3")
                             .padding(.top, 100)
 
                     }
