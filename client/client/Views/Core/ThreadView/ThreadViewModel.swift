@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct GameObject: Hashable {
+struct GameObject: Hashable, Identifiable {
+    let id = UUID().uuidString
     var isImage: Bool
     var data: String
 }
@@ -26,6 +27,8 @@ final class ThreadViewModel: ObservableObject {
         ])
     ]
     
+    @Published var objectCount: Int = 0
+    
     init() {
         let pngData = UIImage(named: "desenho-teste")?.pngData()
         let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
@@ -35,12 +38,17 @@ final class ThreadViewModel: ObservableObject {
                 if gameObject.isImage {
                     gameObject.data = strBase64 ?? ""
                 }
+                objectCount += 1
             }
         }
     }
         
     func teste() {
         print("back-next")
+    }
+    
+    func getSquareAmount() -> Int {
+        return objectCount % 4
     }
 }
 

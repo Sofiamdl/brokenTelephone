@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct ImagePhraseShown: View {
+struct ImagePhraseShown: View, Identifiable {
+    let id = UUID().uuidString
     let isImage: Bool
     let info: String
     @State var isChosen: Bool
