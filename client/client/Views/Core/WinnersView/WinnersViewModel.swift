@@ -10,7 +10,7 @@ import SwiftUI
 
 
 final class WinnersViewModel: ObservableObject {
-    @Published var example: String?
+    @Published var winners: [String] = []
     
     func teste() {
         print("back-next")
