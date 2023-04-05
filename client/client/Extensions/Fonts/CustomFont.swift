@@ -12,22 +12,16 @@ enum Style {
     case light
 }
 
-func projectFont(style: Style, size: CGFloat) -> Font {
-if style == .extraBold {
+func projectFont(style:Style, size: CGFloat) -> Font {
+    if style == .extraBold {
+        return .custom("Gilroy-ExtraBold", size: size)
+    }
 
-return .custom("Gilroy-ExtraBold", size: size)
+    if style == .light {
+        return .custom("Gilroy-Light", size: size)
+    }
 
-}
-
-if style == .light {
-
-return .custom("Gilroy-Light", size: size)
-
-}
-
-
-
-return .custom("Gilroy-Light", size: 30)
+    return .custom("Gilroy-Light", size: 30)
 
 }
 

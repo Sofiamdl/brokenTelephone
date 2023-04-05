@@ -18,10 +18,7 @@ extension Color {
     static let gameRoomBackground = Color("GameScreenBackgroundColor")
     static let homePageBackground = Color("HomePageBackgroundColor")
     static let loadingRoomBackground = Color("LoadingScreenBackgroundColor")
-    
-
-
-
-
+    static let customGreen = Color("customGreen")
+    static let gameScreenBackground = Color("GameScreenBackgroundColor")
 
 }
