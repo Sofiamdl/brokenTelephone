@@ -7,11 +7,18 @@ export class InMemoryVotedRepository implements IVotedRepository {
     async create(gameRoomCode: string) {
         this.voted[gameRoomCode] = [];
 
+        console.log("CREATE VOTED:")
+        console.log(this.voted[gameRoomCode]);
+        console.log("------------------")
+
         return this.voted;
     }
 
     async addGameObjetToVoted(gameObject: IGameObject, gameRoomCode: string) {
         this.voted[gameRoomCode].push(gameObject);
+
+        console.log("ADD VOTED:")
+        console.log(this.voted[gameRoomCode]);
 
         return gameObject;
     }
@@ -28,6 +35,9 @@ export class InMemoryVotedRepository implements IVotedRepository {
         newGameObject.votes = newLikes;
 
         this.voted[gameRoomCode][gameObjectIndex] = newGameObject;
+
+        console.log("SAVE VOTED:")
+        console.log(this.voted[gameRoomCode]);
         
         return this.voted[gameRoomCode][gameObjectIndex];
     }
