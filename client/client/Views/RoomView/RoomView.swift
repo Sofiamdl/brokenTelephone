@@ -79,23 +79,8 @@ struct RoomView: View {
                         TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
                      
                             .onReceive(viewModel.timer) { _ in
-                            if viewModel.timeRemaining > 0 {
-                                viewModel.timerBarWidthOrange -= viewModel.timerBarDiminish
-                                viewModel.timerBarWidthYellow += viewModel.timerBarDiminish
-                                viewModel.timeRemaining -= 1
-                                
-                            }
-                                
-                                if viewModel.timerWentZero() {
-                                    if viewModel.gameStatus == .userIsDrawing {
-                                        viewModel.gameStatus = .userIsGuessing
-                                    } else {
-                                        viewModel.gameStatus = .userIsDrawing
-                                    }
-//                                    viewModel.timeRemaining = 300
-//                                    viewModel.timerBarWidthYellow = 0.0
-//                                    viewModel.timerBarWidthOrange = 942.0
-                                }
+                            viewModel.timeSubtraction()
+                            viewModel.gameModeChange()
                         }
                         
                         switch viewModel.gameStatus {
@@ -112,6 +97,7 @@ struct RoomView: View {
                    
                         }
                         .frame (width: 936, height: 588)
+
                         
                         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                             .onChanged({
@@ -125,11 +111,16 @@ struct RoomView: View {
                                     
                         )
                         .background(Color.white)
+
                         .overlay(
-                            VStack{
-                                Text("Cachorro caramelo dando cambalhota")
-                                    .font(projectFont(style: .extraBold, size: 30))
-                                    .background(Color.fontColor)
+                            VStack(alignment: .leading){
+                                Image("Rectangle 11")
+                                    .overlay(
+                                        Text("Cachorro caramelo dando cambalhota")
+                                            .font(projectFont(style: .extraBold, size: 20))
+                                        
+                                    )
+                                
 
                             }
                             .frame(height: 588, alignment: .top)
@@ -147,16 +138,20 @@ struct RoomView: View {
                             Image("zeca-pholder")
                                 .resizable()
                                 .frame (width: 936, height: 588)
-//                            Text("Aqui vai meu palpite")
-                            Rectangle()
-                                .foregroundColor(.white)
-                                .frame(width: 936, height: 60)
+                            
+                            TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
+                                .font(projectFont(style: .extraBold, size: 20))
+                                .frame(width: 888)
                                 .shadow(radius: 5)
-                                .overlay(
-                                    TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 44)
+                                .background(Color.white)
+                            
+                                    
+                                   
                                     
 
-                                )
+                                
 
 
                             

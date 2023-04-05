@@ -11,7 +11,7 @@ class RoomViewModel: ObservableObject {
     @Published var currentLine = Line()
     @Published var lines: [Line] = []
     @Published var selectedColor: Color = Color.projectRed
-    @Published var timerBarWidthOrange = 942.0
+    @Published var timerBarWidthOrange = 936.0
     @Published var timerBarWidthYellow = 0.0
     @Published var timeRemaining = 300 // 30s * 10
     @Published var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -26,13 +26,31 @@ class RoomViewModel: ObservableObject {
         if timeRemaining == 0 {
             self.timeRemaining = 300
             self.timerBarWidthYellow = 0.0
-            self.timerBarWidthOrange = 942.0
+            self.timerBarWidthOrange = 936.0
             return true
         }
-        return false 
+        return false
     }
     
+    func timeSubtraction() {
+        if self.timeRemaining > 0 {
+            self.timerBarWidthOrange -= timerBarDiminish
+            self.timerBarWidthYellow += timerBarDiminish
+            self.timeRemaining -= 1
+            
+        }
+    }
     
+    func gameModeChange() {
+        if timerWentZero() {
+            if gameStatus == .userIsDrawing {
+               gameStatus = .userIsGuessing
+            } else {
+                gameStatus = .userIsDrawing
+            }
+     
+        }
+    }
     
     
 }
