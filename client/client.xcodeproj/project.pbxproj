@@ -17,6 +17,8 @@
 		BC69264229D74ECE00809A16 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69264129D74ECE00809A16 /* ViewModifier.swift */; };
 		BC69264429DCA12C00809A16 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69264329DCA12C00809A16 /* Line.swift */; };
 		BC8C868429DCB295001238D6 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C868329DCB295001238D6 /* ColorPicker.swift */; };
+		BC8C868829DD0981001238D6 /* TimerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C868729DD0981001238D6 /* TimerBar.swift */; };
+		BC8C868A29DD0C54001238D6 /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8C868929DD0C54001238D6 /* RoomViewModel.swift */; };
 		BCECABFE29D4DD4700615452 /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECABFD29D4DD4700615452 /* OrangeButton.swift */; };
 		BCECAC0229D501CD00615452 /* CodeTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCECAC0129D501CD00615452 /* CodeTextfield.swift */; };
 		BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28801B29C8CE8000036B84 /* clientApp.swift */; };
@@ -43,6 +45,8 @@
 		BC69264129D74ECE00809A16 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		BC69264329DCA12C00809A16 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		BC8C868329DCB295001238D6 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		BC8C868729DD0981001238D6 /* TimerBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBar.swift; sourceTree = "<group>"; };
+		BC8C868929DD0C54001238D6 /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		BCECABFD29D4DD4700615452 /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 		BCECAC0129D501CD00615452 /* CodeTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextfield.swift; sourceTree = "<group>"; };
 		BF28801829C8CE8000036B84 /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC8C868B29DD0F15001238D6 /* RoomView */ = {
+			isa = PBXGroup;
+			children = (
+				BC69264329DCA12C00809A16 /* Line.swift */,
+				BC69263A29D61CBF00809A16 /* RoomView.swift */,
+			);
+			path = RoomView;
+			sourceTree = "<group>";
+		};
 		BCB9048529D4B0A80021E691 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 				BCECABFD29D4DD4700615452 /* OrangeButton.swift */,
 				BCECAC0129D501CD00615452 /* CodeTextfield.swift */,
 				BC8C868329DCB295001238D6 /* ColorPicker.swift */,
+				BC8C868729DD0981001238D6 /* TimerBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -134,8 +148,7 @@
 				BF28805629D3CE5E00036B84 /* Navigation */,
 				BF28805029D3C35800036B84 /* Core */,
 				BC69263629D51DF200809A16 /* LoadingRoomView.swift */,
-				BC69264329DCA12C00809A16 /* Line.swift */,
-				BC69263A29D61CBF00809A16 /* RoomView.swift */,
+				BC8C868B29DD0F15001238D6 /* RoomView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,7 +158,6 @@
 			children = (
 				BC69264129D74ECE00809A16 /* ViewModifier.swift */,
 				BF28804629D3C19500036B84 /* ContentView.swift */,
-				BF28804729D3C19500036B84 /* ContentViewModel.swift */,
 				BC69263C29D6721D00809A16 /* Field.swift */,
 			);
 			path = ContentView;
@@ -171,7 +183,9 @@
 		BF28805329D3C5FF00036B84 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BF28804729D3C19500036B84 /* ContentViewModel.swift */,
 				BF28805429D3C61200036B84 /* SocketViewModel.swift */,
+				BC8C868929DD0C54001238D6 /* RoomViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -277,10 +291,12 @@
 				BC69263B29D61CBF00809A16 /* RoomView.swift in Sources */,
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
 				BC69263D29D6721D00809A16 /* Field.swift in Sources */,
+				BC8C868829DD0981001238D6 /* TimerBar.swift in Sources */,
 				BC8C868429DCB295001238D6 /* ColorPicker.swift in Sources */,
 				BC69264429DCA12C00809A16 /* Line.swift in Sources */,
 				BC69264229D74ECE00809A16 /* ViewModifier.swift in Sources */,
 				BF28804929D3C19500036B84 /* ContentView.swift in Sources */,
+				BC8C868A29DD0C54001238D6 /* RoomViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

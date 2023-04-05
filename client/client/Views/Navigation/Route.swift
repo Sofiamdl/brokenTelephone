@@ -10,4 +10,5 @@ import Foundation
 enum Route {
     case home
     case loadingRoom
+    case gameRoom
 }

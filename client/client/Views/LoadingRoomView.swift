@@ -9,6 +9,16 @@ import SwiftUI
 
 struct LoadingRoomView: View {
     @EnvironmentObject var coordinator: Coordinator
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timerMax = 5
+    
+    func isTimeUp() {
+        if timerMax == 0 {
+            coordinator.goToGameRoom()
+        }
+    }
+    
+    
     var body: some View {
         Color.loadingRoomBackground
             .ignoresSafeArea()
@@ -34,13 +44,26 @@ struct LoadingRoomView: View {
                         Image("havaianas-pholder")
                             .resizable()
                             .frame(width: 30, height: 40)
+                            
                     }
                     Spacer()
-
-
+                    
+                    
                 }
                     .padding(130)
+                    .onReceive(timer) { _ in
+                        if timerMax > 0 {
+                            self.timerMax = timerMax - 1
+                        }
+                        if timerMax == 0 {
+                            self.timer.upstream.connect().cancel()
+                            coordinator.goToGameRoom()
+
+                        }
+
+                    }
             )
+        
         
     }
 }

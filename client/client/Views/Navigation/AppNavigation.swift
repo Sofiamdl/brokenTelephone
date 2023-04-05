@@ -26,7 +26,10 @@ struct AppNavigation: View {
                     ContentView()
                 case .loadingRoom:
                     LoadingRoomView()
+                case .gameRoom:
+                    RoomView()
+                }
                 }
             }
-    }
+    
 }

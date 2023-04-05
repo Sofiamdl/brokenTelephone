@@ -10,16 +10,14 @@ import SwiftUI
 
 struct ColorPickerView: View {
     
-    let colors = [Color.red, Color.orange, Color.black, Color.green, Color.yellow, Color.blue]
+    let colors = [Color.yellow, Color.projectOrange, Color.projectRed, Color.purple, Color.cyan, Color.blue]
     @Binding var selectedColor: Color
-    var indice = 0
     
     var body: some View {
         
         VStack{
             HStack{
                 ForEach((0...2), id: \.self) { indice in
-//                    CircleColorPicker(color: colors[indice])
                     Circle()
                         .foregroundColor(colors[indice])
                         .onTapGesture {
@@ -27,7 +25,7 @@ struct ColorPickerView: View {
                         }
                         .overlay (
                             Circle()
-                                .strokeBorder( colors[indice] == selectedColor ? Color.black : Color.clear)
+                                .strokeBorder( colors[indice] == selectedColor ? Color.fontColor : Color.clear)
                         )
                    
                         
@@ -45,7 +43,7 @@ struct ColorPickerView: View {
                         }
                         .overlay (
                             Circle()
-                                .strokeBorder( colors[indice] == selectedColor ? Color.black : Color.clear)
+                                .strokeBorder( colors[indice] == selectedColor ? Color.fontColor : Color.clear)
                         )
                 }
                 

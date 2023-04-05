@@ -24,8 +24,11 @@ class Coordinator: ObservableObject {
     }
     
     func goToLoadingPage() {
-        print("ta rodando")
         path.append(Route.loadingRoom)
+    }
+    
+    func goToGameRoom(){
+        path.append(Route.gameRoom)
     }
     
     
