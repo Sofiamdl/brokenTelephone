@@ -12,6 +12,8 @@ import { play } from "./controllers/play";
 import { GameIndexCalculator } from "../utilities/game-index-calculator";
 import { game } from "./controllers/game";
 import { hostTimeout } from "./controllers/timeout";
+import { IVotedRepository } from "../repositories/voted-repository";
+import { InMemoryVotedRepository } from "../repositories/in-memory/inmemory-voted-repository";
 
 
 
@@ -21,6 +23,7 @@ export async function createGameRooms(app: FastifyInstance)  {
     const gameRepository: IGamesRepository = new InMemoryGamesRepository();
     const threadRepository: IThreadsRepository = new InMemoryThreadRepository();
     const phrasesRepository: IPhrasesRepository = new InMemoryPhrasesRepository();
+    const votedRepository: IVotedRepository = new InMemoryVotedRepository();
     const gameIndexCalculator: GameIndexCalculator = new GameIndexCalculator();
 
     app.ready(err => {
@@ -39,8 +42,10 @@ export async function createGameRooms(app: FastifyInstance)  {
                 joinRoom(socket, gameRepository, data);
             })
 
-            socket.on("play", function(data) {
+            socket.on("play", async function(data) {
                 play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
+                const { code } = await gameRepository.findRoomByUserId(socket.id);
+                await votedRepository.create(code);
             })
 
             socket.on("game", async function(data) {
@@ -49,6 +54,27 @@ export async function createGameRooms(app: FastifyInstance)  {
 
             socket.on("host-timeout", async function(data) {
                 hostTimeout(socket, gameRepository, threadRepository, gameIndexCalculator, data, app.io);
+            })
+
+            socket.on("vote", async function(data) {
+                const gameObjectId = data;
+
+                const { code } = await gameRepository.findRoomByUserId(socket.id);
+
+                const gameObject = await threadRepository.findGameObjectInThreadById(socket.id, gameObjectId);
+
+                if(!gameObject) {
+                    return null;
+                }
+
+                const existingGameObject = await votedRepository.findById(code, gameObjectId)
+
+                if(existingGameObject) {
+                    await votedRepository.saveGameObjectToThread(code, gameObjectId, existingGameObject.votes + 1);
+                } else {
+                    gameObject.votes++;
+                    await votedRepository.addGameObjetToVoted(gameObject, code);
+                }
             })
 
 
