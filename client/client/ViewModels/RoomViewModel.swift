@@ -19,6 +19,7 @@ class RoomViewModel: ObservableObject {
     
     @Published var gameStatus: GameStatus = .userIsDrawing
     @Published var gameRoomcode = "1234"
+    @Published var userGuess = ""
     
     
     func timerWentZero() -> Bool {
@@ -30,6 +31,8 @@ class RoomViewModel: ObservableObject {
         }
         return false 
     }
+    
+    
     
     
 }

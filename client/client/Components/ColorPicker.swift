@@ -19,6 +19,8 @@ struct ColorPickerView: View {
             HStack{
                 ForEach((0...2), id: \.self) { indice in
                     Circle()
+                        .frame(width: 30, height: 30)
+                    
                         .foregroundColor(colors[indice])
                         .onTapGesture {
                             selectedColor = colors[indice]
@@ -26,17 +28,20 @@ struct ColorPickerView: View {
                         .overlay (
                             Circle()
                                 .strokeBorder( colors[indice] == selectedColor ? Color.fontColor : Color.clear)
+                            
                         )
-                   
-                        
-                    }
-                        
+                    
                     
                 }
+                
+                
             }
+            
             HStack{
                 ForEach((3...5), id: \.self) { indice in
                     Circle()
+                        .frame(width: 30, height: 30)
+                    
                         .foregroundColor(colors[indice])
                         .onTapGesture {
                             selectedColor = colors[indice]
@@ -44,11 +49,13 @@ struct ColorPickerView: View {
                         .overlay (
                             Circle()
                                 .strokeBorder( colors[indice] == selectedColor ? Color.fontColor : Color.clear)
+                            
+                            
                         )
                 }
                 
             }
         }
-    
-    
+        
+    }
 }

@@ -13,10 +13,11 @@ struct RoomView: View {
     @ObservedObject var viewModel = RoomViewModel()
     
     
+    
 
     
-    let rows = GridItem()
-    
+    let column = [GridItem(.flexible())]
+
     
     var body: some View {
         Color.gameRoomBackground
@@ -33,9 +34,9 @@ struct RoomView: View {
                             .overlay(
                                 VStack(spacing: 5){
                                     Text("Chama os amigos")
-                                        .font(projectFont(style: .extraBold, size: 30))
+                                        .font(projectFont(style: .extraBold, size: 20))
                                     Text("\(viewModel.gameRoomcode)")
-                                        .font(projectFont(style: .extraBold, size: 30))
+                                        .font(projectFont(style: .extraBold, size: 20))
 
 
                                 }
@@ -44,8 +45,31 @@ struct RoomView: View {
                                                              
 
                             )
+                        
                         Rectangle()
                             .foregroundColor(.loadingRoomBackground)
+                            .frame(height: 424)
+                            .overlay(
+                                LazyVGrid(columns: column) {
+                                    ForEach((0...4), id: \.self) { _ in
+                                        HStack(spacing: 30){
+                                            
+                                            Image("zeca-pholder")
+                                                .resizable()
+                                                .frame(width: 64, height: 64)
+                                                .cornerRadius(100)
+                                            Text("Usuário")
+                                                .frame(alignment: .leading)
+                                                .font(projectFont(style: .extraBold, size: 15))
+                                                .foregroundColor(Color.fontColor)
+                                            Spacer()
+                                        }
+                                        .padding(.leading, 10)
+                                        
+                                        
+                                    }
+                                }
+                            )
                         Rectangle()
                             .foregroundColor(.projectWhite)
                         
@@ -123,8 +147,18 @@ struct RoomView: View {
                             Image("zeca-pholder")
                                 .resizable()
                                 .frame (width: 936, height: 588)
-                            Text("Aqui vai meu palpite")
-                            Spacer()
+//                            Text("Aqui vai meu palpite")
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .frame(width: 936, height: 60)
+                                .shadow(radius: 5)
+                                .overlay(
+                                    TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
+                                    
+
+                                )
+
+
                             
                         }
                     }
