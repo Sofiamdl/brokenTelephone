@@ -12,6 +12,7 @@ struct RoomView: View {
     @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel = RoomViewModel()
     
+    
 
     
     let rows = GridItem()
@@ -29,6 +30,20 @@ struct RoomView: View {
                         
                         Rectangle()
                             .foregroundColor(.fontColor)
+                            .overlay(
+                                VStack(spacing: 5){
+                                    Text("Chama os amigos")
+                                        .font(projectFont(style: .extraBold, size: 30))
+                                    Text("\(viewModel.gameRoomcode)")
+                                        .font(projectFont(style: .extraBold, size: 30))
+
+
+                                }
+                                    .frame(width: 300)
+                                    
+                                                             
+
+                            )
                         Rectangle()
                             .foregroundColor(.loadingRoomBackground)
                         Rectangle()
@@ -96,12 +111,14 @@ struct RoomView: View {
                             .frame(height: 588, alignment: .top)
                             
                                                     )
+                         
+                                ColorPickerView(selectedColor: $viewModel.selectedColor)
+                                    .onChange(of: viewModel.selectedColor) {
+                                        newColor in
+                                        viewModel.currentLine.color =  newColor
+                                    }
                         
-                        ColorPickerView(selectedColor: $viewModel.selectedColor)
-                            .onChange(of: viewModel.selectedColor) {
-                                newColor in
-                                viewModel.currentLine.color =  newColor
-                            }
+                        
                         case .userIsGuessing:
                             Image("zeca-pholder")
                                 .resizable()

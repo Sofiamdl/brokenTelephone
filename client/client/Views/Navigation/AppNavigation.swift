@@ -16,6 +16,7 @@ struct AppNavigation: View {
             selectScreen
         }
         .environmentObject(coordinator)
+        .navigationBarBackButtonHidden(true)
     }
     
     private var selectScreen: some View {

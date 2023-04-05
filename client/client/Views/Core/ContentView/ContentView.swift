@@ -68,10 +68,13 @@ struct ContentView: View {
                                         viewModel.roomCodeArray[field]
                                             .focused($focusedField, equals: viewModel.fieldArray[field])
                                             .onSubmit {
-                                                
-                                                if focusedField != viewModel.fieldArray[3] {
-                                                    focusedField = viewModel.fieldArray[field + 1]
+                                                if viewModel.isFieldValid(field: viewModel.roomCodeArray[field]) {
+                                                    if focusedField != viewModel.fieldArray[3] {
+                                                        focusedField = viewModel.fieldArray[field + 1]
+                                                    }
                                                 }
+                                                
+                                               
                                                 
                                                 
                                             }
@@ -86,13 +89,14 @@ struct ContentView: View {
                                 
                                 OrangeButton(buttonLabel: "Entrar", buttonAction: {
                                     let finalCode = viewModel.returnFinalCode()
-                                    let isFieldValid = viewModel.isFieldValid()
+                                    let areFieldsValid = viewModel.areFieldsValid()
                                     print(finalCode)
-                                    if isFieldValid {
+                                    if areFieldsValid {
                                         coordinator.goToLoadingPage()
                                         print("oi")
                                     } else {
-                                        //                                    Alert(title: "Por favor, preencha o campo", dismissButton: .default(<#T##label: Text##Text#>))
+                                        viewModel.showingAlert = true
+                                        
                                     }
                                     
                                     
@@ -104,6 +108,11 @@ struct ContentView: View {
                                 
                             }
                             .frame(width: 400, alignment: .center)
+                            .alert("Por favor, preencha corretamente os campos com o código da sua sala!", isPresented: $viewModel.showingAlert) {
+                                Button("OK", role: .cancel) {
+                                    viewModel.showingAlert = false
+                                }
+                            }
                             
                         }
                         

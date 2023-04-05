@@ -11,12 +11,8 @@ struct LoadingRoomView: View {
     @EnvironmentObject var coordinator: Coordinator
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timerMax = 5
-    
-    func isTimeUp() {
-        if timerMax == 0 {
-            coordinator.goToGameRoom()
-        }
-    }
+    @State var navigationBarBackButtonHidden = true
+
     
     
     var body: some View {
@@ -32,20 +28,12 @@ struct LoadingRoomView: View {
                         .foregroundColor(Color.fontColor)
                     Spacer()
                     HStack{
-                        Image("havaianas-pholder")
-                            .resizable()
-                            .frame(width: 30, height: 40)
-                        Image("havaianas-pholder")
-                            .resizable()
-                            .frame(width: 30, height: 40)
-                        Image("havaianas-pholder")
-                            .resizable()
-                            .frame(width: 30, height: 40)
-                        Image("havaianas-pholder")
-                            .resizable()
-                            .frame(width: 30, height: 40)
+                            Image("havaianas-pholder")
+                                .resizable()
+                                .frame(width: 30, height: 40)
                             
                     }
+                    
                     Spacer()
                     
                     
@@ -57,6 +45,7 @@ struct LoadingRoomView: View {
                         }
                         if timerMax == 0 {
                             self.timer.upstream.connect().cancel()
+                            
                             coordinator.goToGameRoom()
 
                         }
@@ -66,6 +55,7 @@ struct LoadingRoomView: View {
         
         
     }
+        
 }
 struct LoadingRoomContent_Previews: PreviewProvider {
     static var previews: some View {

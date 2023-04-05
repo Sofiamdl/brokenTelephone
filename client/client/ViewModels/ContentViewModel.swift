@@ -15,11 +15,13 @@ final class ContentViewModel: ObservableObject {
     
     @Published var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]
     @Published var fieldArray = [Field.firstCharacter, Field.secondCharacter, Field.thirdCharacter, Field.fourthCharacter, Field.dismissKeyboard]
+    @Published var showingAlert = false
+
     
     func returnFinalCode() -> String {
         let code = roomCodeMap()
         let finalCode = "\(code[0])\(code[1])\(code[2])\(code[3])"
-        if isFieldValid(){
+        if areFieldsValid(){
             //n precisa
             return finalCode
         }
@@ -27,20 +29,22 @@ final class ContentViewModel: ObservableObject {
         return ""
     }
     
-    func isFieldValid() -> Bool {
-        let codeArray = roomCodeMap()
-        if codeArray.count != 4 {
-            print("sou falso")
-            return false
+    func isFieldValid(field: RoomCodeTextfield) -> Bool {
+        if field.textBindingManager.text != "" {
+            return true
         }
+        return false
+    }
+    
+    func areFieldsValid() -> Bool {
+        let codeArray = roomCodeMap()
+
         for item in codeArray {
             if item == "" || item == " " {
-                print("sou falso2")
 
                 return false
             }
         }        
-        print("souvdd")
         return true
         
     }

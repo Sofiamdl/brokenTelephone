@@ -18,6 +18,7 @@ class RoomViewModel: ObservableObject {
     @Published var timerBarDiminish = 3.14 //942 divided by 300
     
     @Published var gameStatus: GameStatus = .userIsDrawing
+    @Published var gameRoomcode = "1234"
     
     
     func timerWentZero() -> Bool {

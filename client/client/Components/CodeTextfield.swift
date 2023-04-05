@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RoomCodeTextfield: View {
+    
+    
     @ObservedObject var textBindingManager = TextBindingManager(limit: 1)
     
     
