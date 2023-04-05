@@ -36,7 +36,7 @@ struct RoomView: View {
                         
                    
                     }
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading, spacing: 20){
                         TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
                      
                             .onReceive(viewModel.timer) { _ in
@@ -46,9 +46,22 @@ struct RoomView: View {
                                 viewModel.timeRemaining -= 1
                                 
                             }
+                                
+                                if viewModel.timerWentZero() {
+                                    if viewModel.gameStatus == .userIsDrawing {
+                                        viewModel.gameStatus = .userIsGuessing
+                                    } else {
+                                        viewModel.gameStatus = .userIsDrawing
+                                    }
+//                                    viewModel.timeRemaining = 300
+//                                    viewModel.timerBarWidthYellow = 0.0
+//                                    viewModel.timerBarWidthOrange = 942.0
+                                }
                         }
                         
-        
+                        switch viewModel.gameStatus {
+                        case .userIsDrawing:
+                     
                         Canvas{
                             context, size in
                             for line in viewModel.lines {
@@ -89,7 +102,14 @@ struct RoomView: View {
                                 newColor in
                                 viewModel.currentLine.color =  newColor
                             }
-                        
+                        case .userIsGuessing:
+                            Image("zeca-pholder")
+                                .resizable()
+                                .frame (width: 936, height: 588)
+                            Text("Aqui vai meu palpite")
+                            Spacer()
+                            
+                        }
                     }
                 }
             )

@@ -17,5 +17,18 @@ class RoomViewModel: ObservableObject {
     @Published var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Published var timerBarDiminish = 3.14 //942 divided by 300
     
+    @Published var gameStatus: GameStatus = .userIsDrawing
+    
+    
+    func timerWentZero() -> Bool {
+        if timeRemaining == 0 {
+            self.timeRemaining = 300
+            self.timerBarWidthYellow = 0.0
+            self.timerBarWidthOrange = 942.0
+            return true
+        }
+        return false 
+    }
+    
     
 }
