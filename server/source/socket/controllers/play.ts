@@ -3,8 +3,9 @@ import { IGamesRepository } from "../../repositories/games-repository";
 import { IPhrasesRepository } from "../../repositories/phrases-repository";
 import { IGameObject, IThreadsRepository } from "../../repositories/threads-repository";
 import { randomUUID } from "crypto";
+import { IVotedRepository } from "../../repositories/voted-repository";
 
-export async function play(socket: Socket, phrasesRepository: IPhrasesRepository, gameRepository: IGamesRepository, threadRepository: IThreadsRepository, data: any, io: Server) {
+export async function play(socket: Socket, phrasesRepository: IPhrasesRepository, gameRepository: IGamesRepository, threadRepository: IThreadsRepository, votedRepository: IVotedRepository, data: any, io: Server) {
     const roomCode = data;
 
     const room = await gameRepository.findRoomByCode(roomCode)
@@ -29,5 +30,7 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
 
     io.to(roomCode).emit("start-timer", "")
 
+    const { code } = await gameRepository.findRoomByUserId(socket.id);
+    await votedRepository.create(code);
 
 }

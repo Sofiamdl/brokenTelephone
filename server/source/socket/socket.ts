@@ -44,9 +44,7 @@ export async function createGameRooms(app: FastifyInstance)  {
             })
 
             socket.on("play", async function(data) {
-                play(socket, phrasesRepository, gameRepository, threadRepository, data, app.io);
-                const { code } = await gameRepository.findRoomByUserId(socket.id);
-                await votedRepository.create(code);
+                play(socket, phrasesRepository, gameRepository, threadRepository, votedRepository, data, app.io);
             })
 
             socket.on("game", async function(data) {
