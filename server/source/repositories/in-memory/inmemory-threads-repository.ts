@@ -24,4 +24,14 @@ export class InMemoryThreadRepository implements IThreadsRepository {
     async findThreadByUserId(userId: string) {        
         return this.threads[userId]
     }
+
+    async findGameObjectInThreadById(userId: string, gameObjectId: string) {
+        const gameObject = this.threads[userId].find(item => item.id === gameObjectId);
+
+        if(!gameObject) {
+            return null
+        }
+
+        return gameObject
+    }
 }
