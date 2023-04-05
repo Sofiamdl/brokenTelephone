@@ -1,6 +1,7 @@
 import { IThreadsRepository, IGameObject, IThreadObject } from "../threads-repository";
 
 export class InMemoryThreadRepository implements IThreadsRepository {
+
     public threads: IThreadObject = {};
 
     async createRoomThreads(users: string[]) {
@@ -15,11 +16,12 @@ export class InMemoryThreadRepository implements IThreadsRepository {
     async addGameObjectToThread(userId: string, gameObject: IGameObject) {
         this.threads[userId].push(gameObject);
 
+        console.log(this.threads);
+
         return this.threads;
     }
 
     async findThreadByUserId(userId: string) {        
         return this.threads[userId]
     }
-
 }

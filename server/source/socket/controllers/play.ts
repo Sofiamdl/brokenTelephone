@@ -7,6 +7,11 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
     const roomCode = data;
 
     const room = await gameRepository.findRoomByCode(roomCode)
+    
+    if(!room) {
+        throw new Error("Bad request")
+    }
+
     const users = room.users
 
     const usersIds = users.map(({id}) => id)
@@ -21,5 +26,7 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
         await threadRepository.addGameObjectToThread(users[i].id, userGameObject)
     }
 
+    io.to(roomCode).emit("start-timer", "")
+
+
 }
-// JOGO var = (indiceUsuarioNoArray + 1) mod (quantidadeUsuarios)

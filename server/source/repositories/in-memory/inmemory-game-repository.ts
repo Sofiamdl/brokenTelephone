@@ -7,9 +7,10 @@ export class InMemoryGamesRepository implements IGamesRepository {
         const newGameRoom: IGameRoom = {
             code: gameRoomCode,
             hostId: host.id,
+            round: 0,
             users: [host],
         }
-        
+
         this.gameRooms.push(newGameRoom);
 
         console.log(this.gameRooms);
@@ -41,16 +42,26 @@ export class InMemoryGamesRepository implements IGamesRepository {
         return deletedRoom;
     }
 
+    async findRoomByUserId(userId: string) {
+        const room = this.gameRooms.find(item => item.users.some(user => user.id === userId));
+
+        if (!room) {
+            throw new Error();
+        }
+
+        return room;
+    }
+
     async findUserInRoom(userId: string, gameRoomCode: string) {
         const gameRoom = this.gameRooms.find(item => item.code === gameRoomCode);
 
-        if(!gameRoom) {
+        if (!gameRoom) {
             return null;
         }
 
         const userInRoom = gameRoom.users.find(item => item.id === userId);
 
-        if(!userInRoom) {
+        if (!userInRoom) {
             return null;
         }
 
@@ -60,13 +71,13 @@ export class InMemoryGamesRepository implements IGamesRepository {
     async saveGameUser(user: IGameUser) {
         const gameRoomIndex = this.gameRooms.findIndex(item => item.code === user.roomCode);
 
-        if(gameRoomIndex < 0) {
+        if (gameRoomIndex < 0) {
             throw new Error();
         }
 
         const userIndex = this.gameRooms[gameRoomIndex].users.findIndex(item => item.id === user.id);
 
-        if(userIndex < 0) {
+        if (userIndex < 0) {
             throw new Error();
         }
 
@@ -78,7 +89,7 @@ export class InMemoryGamesRepository implements IGamesRepository {
     async addUserToGameRoom(user: IGameUser, gameRoomCode: string) {
         const gameRoomIndex = this.gameRooms.findIndex(item => item.code === gameRoomCode);
 
-        if(gameRoomIndex < 0) {
+        if (gameRoomIndex < 0) {
             throw new Error();
         }
 
@@ -92,13 +103,13 @@ export class InMemoryGamesRepository implements IGamesRepository {
     async removeUserFromGameRoom(userId: string, gameRoomCode: string) {
         const gameRoomIndex = this.gameRooms.findIndex(item => item.code === gameRoomCode);
 
-        if(gameRoomIndex < 0) {
+        if (gameRoomIndex < 0) {
             throw new Error();
         }
 
         const userIndex = this.gameRooms[gameRoomIndex].users.findIndex(item => item.id === userId);
 
-        if(userIndex < 0) {
+        if (userIndex < 0) {
             throw new Error();
         }
 
@@ -107,9 +118,22 @@ export class InMemoryGamesRepository implements IGamesRepository {
         this.gameRooms[gameRoomIndex] = {
             code: this.gameRooms[gameRoomIndex].code,
             hostId: this.gameRooms[gameRoomIndex].hostId,
+            round: this.gameRooms[gameRoomIndex].round,
             users: newRoomUsers,
         };
 
         return this.gameRooms[gameRoomIndex];
+    }
+
+    async incrementGameRoomRound(gameRoomCode: string) {
+        const roomIndex = this.gameRooms.findIndex(gameRoom => gameRoom.code === gameRoomCode)
+
+        if (roomIndex < 0) {
+            throw new Error();
+        }
+
+        this.gameRooms[roomIndex].round++
+
+        return this.gameRooms[roomIndex]
     }
 }
