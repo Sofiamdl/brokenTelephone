@@ -14,6 +14,7 @@ import { game } from "./controllers/game";
 import { hostTimeout } from "./controllers/timeout";
 import { IVotedRepository } from "../repositories/voted-repository";
 import { InMemoryVotedRepository } from "../repositories/in-memory/inmemory-voted-repository";
+import { vote } from "./controllers/vote";
 
 
 
@@ -57,24 +58,7 @@ export async function createGameRooms(app: FastifyInstance)  {
             })
 
             socket.on("vote", async function(data) {
-                const gameObjectId = data;
-
-                const { code } = await gameRepository.findRoomByUserId(socket.id);
-
-                const gameObject = await threadRepository.findGameObjectInThreadById(socket.id, gameObjectId);
-
-                if(!gameObject) {
-                    return null;
-                }
-
-                const existingGameObject = await votedRepository.findById(code, gameObjectId)
-
-                if(existingGameObject) {
-                    await votedRepository.saveGameObjectToThread(code, gameObjectId, existingGameObject.votes + 1);
-                } else {
-                    gameObject.votes++;
-                    await votedRepository.addGameObjetToVoted(gameObject, code);
-                }
+                vote(socket, gameRepository, votedRepository, threadRepository, data);
             })
 
 
