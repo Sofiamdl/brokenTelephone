@@ -29,7 +29,7 @@ struct SignInWithAppleSwiftUIButton: View {
         }
     }
     
-    func placeOrder(id: String, completion: @escaping (_ result: Bool) -> Void) {
+    func SignIn(id: String, completion: @escaping (_ result: Bool) -> Void) {
         let url = URL(string: "http://localhost:3001/users/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -43,7 +43,6 @@ struct SignInWithAppleSwiftUIButton: View {
             }
             
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("erro1")
                 completion(false)
                 return
             }
@@ -53,7 +52,6 @@ struct SignInWithAppleSwiftUIButton: View {
                 let user = try decoder.decode(UserResponse.self, from: data)
                 completion(true)
                 loginViewModel.user = user.user
-                print (loginViewModel.user)
                 return
             } catch {
                 
@@ -65,6 +63,42 @@ struct SignInWithAppleSwiftUIButton: View {
         task.resume()
     }
     
+    func SignUp(id: String, name: String, email: String, token: String, completion: @escaping (_ result: Bool) -> Void) {
+        let url = URL(string: "http://localhost:3001/auth")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters = ["id": id, "name": name, "email": email, "token": token]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(error)
+                completion(false)
+                return
+            }
+            
+            guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(false)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let user = try decoder.decode(UserResponse.self, from: data)
+                completion(true)
+            } catch {
+                
+                completion(false)
+                return
+            }
+        }
+        
+        task.resume()
+    }
     
     func SignInButton(_ type: SignInWithAppleButton.Style) -> some View {
         return SignInWithAppleButton(.signIn) { request in
@@ -77,13 +111,23 @@ struct SignInWithAppleSwiftUIButton: View {
                 case let authAppleCredential as ASAuthorizationAppleIDCredential:
                     print (authAppleCredential.user)
                     Task {
-                        placeOrder(id: authAppleCredential.user) { result in
-                            if result == true
-                            {
-                                print ("due certo")
+                        SignIn(id: authAppleCredential.user) { result in
+                            if result == false{
+                                Task {
+                                    SignUp(id:authAppleCredential.user, name:(authAppleCredential.fullName?.givenName ?? "") + " " + (authAppleCredential.fullName?.familyName ?? ""), email:authAppleCredential.email ?? "", token:authAppleCredential.state ?? "") {
+                                        result in
+                                        if result == true
+                                        {
+                                            //fazer o que aqui
+                                        }
+                                        else {
+                                            print ("User not found")
+                                        }
+                                    }
+                                }
                             }
                             else {
-                                print ("turo eddado")
+                                //fazer o que aqui
                             }
                         }
                     }
