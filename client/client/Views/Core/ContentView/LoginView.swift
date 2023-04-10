@@ -21,12 +21,8 @@ struct SignInWithAppleSwiftUIButton: View {
     
     
     var body: some View {
-        if colorScheme.self == .dark {
-            SignInButton(SignInWithAppleButton.Style.whiteOutline)
-        }
-        else {
             SignInButton(SignInWithAppleButton.Style.black)
-        }
+
     }
     
     func SignIn(id: String, completion: @escaping (_ result: Bool) -> Void) {
@@ -149,13 +145,19 @@ struct LoginPage: View {
     var user: SentUser?
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("OXE!")
-            SignInWithAppleSwiftUIButton()
+        ZStack  {
+            Image("LoginPageAsset")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("NAIÁ")
+                SignInWithAppleSwiftUIButton()
+            }
+
         }
+        
+
         
     }
 }
