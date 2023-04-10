@@ -40,7 +40,7 @@ export async function createGameRooms(app: FastifyInstance)  {
             })
 
             socket.on("join_room", function(data) {
-                joinRoom(socket, gameRepository, data);
+                joinRoom(socket, gameRepository, data, app.io);
             })
 
             socket.on("play", async function(data) {
