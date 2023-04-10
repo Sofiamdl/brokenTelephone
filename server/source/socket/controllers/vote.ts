@@ -4,6 +4,8 @@ import { IVotedRepository } from "../../repositories/voted-repository";
 import { IThreadsRepository } from "../../repositories/threads-repository";
 
 export async function vote(socket: Socket, gameRepository: IGamesRepository, votedRepository: IVotedRepository, threadRepository: IThreadsRepository, data: any) {
+    console.log("IN voted")
+
     const gameObjectId = data;
 
     const { code } = await gameRepository.findRoomByUserId(socket.id);
