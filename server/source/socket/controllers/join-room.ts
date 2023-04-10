@@ -26,7 +26,18 @@ export async function joinRoom(socket: Socket, gameRepository: IGamesRepository,
             throw new Error();
         }
 
-        io.to(roomCode).emit("new_player", user?.name);
+        io.to(roomCode).emit("new_player", user.name);
+
+        const room = await gameRepository.findRoomByCode(roomCode);
+
+        if(!room) {
+            throw new Error()
+        }
+
+        for(const user of room.users) {
+            socket.emit("new_player", user);
+        }
+
         socket.emit("joined", true)
     }
 }
