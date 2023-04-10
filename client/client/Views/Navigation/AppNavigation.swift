@@ -10,12 +10,14 @@ import Charts
 
 struct AppNavigation: View {
     @ObservedObject var coordinator = Coordinator()
+    @ObservedObject var socket = SocketViewModel()
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             selectScreen
         }
         .environmentObject(coordinator)
+        .environmentObject(socket)
         .navigationBarBackButtonHidden(true)
     }
     
