@@ -23,7 +23,7 @@ export async function game(socket: Socket, gameRepository: IGamesRepository, thr
 
     const nextIndex = gameIndexCalculator.getIndexToNext(room.round, room.users.length, userIndex);
 
-    io.to(room.users[nextIndex].id).emit((room.round % 2) === 0 ? "client": "client", data);
+    io.to(room.users[nextIndex].id).emit((room.round % 2) === 0 ? "phrase": "drawing", data);
     
 }
 
