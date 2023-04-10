@@ -16,7 +16,12 @@ final class SocketViewModel: ObservableObject {
     @Published var images:[Data] = []
     @Published var gameRoom: String = ""
     @Published var joinedRoom: Bool = false
-    
+    @Published var users: [String] = []
+    @Published var timeStarted: Bool = false
+    @Published var timeout: Bool = false
+    @Published var currentPhrase: String = ""
+    @Published var currentImage: Data = Data()
+
     init() {
         socket = manager.defaultSocket
         socket.on("connect") { (data, ack) in
@@ -33,8 +38,35 @@ final class SocketViewModel: ObservableObject {
             print(self.joinedRoom ? "Joined Room" : "Outro Codigo")
         }
         
+        socket.on("new_player") { (data, ack) in
+            self.users.append(data[0] as? String ?? "")
+            print(self.users)
+        }
+        
+        socket.on("start-timer") { (data, ack) in
+            self.timeStarted = true
+            print(self.timeStarted)
+        }
+        
+        socket.on("timeout") { (data, ack) in
+            self.timeout = true
+            print(self.timeout)
+        }
+        
+        socket.on("phrase") { (data, ack) in
+            self.currentPhrase = data[0] as? String ?? ""
+            print(self.currentPhrase)
+        }
+        
+        socket.on("drawing") { (data, ack) in
+            if let buffer = data[0] as? String {
+                let dataDecoded : Data = Data(base64Encoded: buffer, options: .ignoreUnknownCharacters)!
+                self.currentImage = dataDecoded
+            }
+        }
+        
         
         socket.connect()
     }
-
+    
 }

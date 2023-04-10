@@ -10,5 +10,5 @@ import SwiftUI
 enum GameStatus {
     case userIsDrawing
     case userIsGuessing
-    
+    case userIsWaiting
 }
