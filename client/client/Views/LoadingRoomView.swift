@@ -10,7 +10,7 @@ import SwiftUI
 struct LoadingRoomView: View {
     @EnvironmentObject var coordinator: Coordinator
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timerMax = 5
+    @State var timerMax = 2
     @State var navigationBarBackButtonHidden = true
 
     
