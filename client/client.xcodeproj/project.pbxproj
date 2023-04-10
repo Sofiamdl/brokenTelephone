@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2746CA29D4BF6E00C60BCF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2746C929D4BF6E00C60BCF /* LoginView.swift */; };
+		5B2746CD29D4C0EA00C60BCF /* SentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2746CC29D4C0EA00C60BCF /* SentUser.swift */; };
+		5B2746D129D777AE00C60BCF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2746D029D777AE00C60BCF /* LoginViewModel.swift */; };
+		5B7559F529E492370006A9D4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7559F429E492370006A9D4 /* ContentViewModel.swift */; };
 		86FB43BD29DBBBAF00991337 /* ThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB43BC29DBBBAF00991337 /* ThreadView.swift */; };
 		86FB43BF29DBBBFB00991337 /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB43BE29DBBBFB00991337 /* ThreadViewModel.swift */; };
 		BC505CEF29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */; };
@@ -32,7 +36,6 @@
 		BF28802329C8CE8000036B84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF28802229C8CE8000036B84 /* Preview Assets.xcassets */; };
 		BF28802E29C8E66D00036B84 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = BF28802D29C8E66D00036B84 /* SocketIO */; };
 		BF28804929D3C19500036B84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804629D3C19500036B84 /* ContentView.swift */; };
-		BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804729D3C19500036B84 /* ContentViewModel.swift */; };
 		BF28804E29D3C25B00036B84 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28804D29D3C25B00036B84 /* Color.swift */; };
 		BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805429D3C61200036B84 /* SocketViewModel.swift */; };
 		BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28805729D3CE8800036B84 /* AppNavigation.swift */; };
@@ -47,6 +50,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B2746C829D4BF5700C60BCF /* client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = client.entitlements; sourceTree = "<group>"; };
+		5B2746C929D4BF6E00C60BCF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5B2746CC29D4C0EA00C60BCF /* SentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentUser.swift; sourceTree = "<group>"; };
+		5B2746D029D777AE00C60BCF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5B7559F429E492370006A9D4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		86FB43BC29DBBBAF00991337 /* ThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadView.swift; sourceTree = "<group>"; };
 		86FB43BE29DBBBFB00991337 /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
 		BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -73,7 +81,6 @@
 		BF28801F29C8CE8000036B84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF28802229C8CE8000036B84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF28804629D3C19500036B84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BF28804729D3C19500036B84 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		BF28804D29D3C25B00036B84 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BF28805429D3C61200036B84 /* SocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewModel.swift; sourceTree = "<group>"; };
 		BF28805729D3CE8800036B84 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
@@ -99,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2746CB29D4BFD900C60BCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B2746CC29D4C0EA00C60BCF /* SentUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		86FB43BB29DBBB9C00991337 /* ThreadView */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +176,8 @@
 		BF28801A29C8CE8000036B84 /* client */ = {
 			isa = PBXGroup;
 			children = (
+				5B2746CB29D4BFD900C60BCF /* Models */,
+				5B2746C829D4BF5700C60BCF /* client.entitlements */,
 				BC505CF129D4B27A00D4A5F7 /* Info.plist */,
 				BCECABFC29D4DD1E00615452 /* Components */,
 				BF28805329D3C5FF00036B84 /* ViewModels */,
@@ -197,6 +214,8 @@
 			children = (
 				BC69264129D74ECE00809A16 /* ViewModifier.swift */,
 				BF28804629D3C19500036B84 /* ContentView.swift */,
+				5B2746C929D4BF6E00C60BCF /* LoginView.swift */,
+				5B2746D029D777AE00C60BCF /* LoginViewModel.swift */,
 				BC69263C29D6721D00809A16 /* Field.swift */,
 			);
 			path = ContentView;
@@ -225,9 +244,9 @@
 		BF28805329D3C5FF00036B84 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BF28804729D3C19500036B84 /* ContentViewModel.swift */,
 				BF28805429D3C61200036B84 /* SocketViewModel.swift */,
 				BC8C868929DD0C54001238D6 /* RoomViewModel.swift */,
+				5B7559F429E492370006A9D4 /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -349,11 +368,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B2746CD29D4C0EA00C60BCF /* SentUser.swift in Sources */,
+				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
+				5B2746D129D777AE00C60BCF /* LoginViewModel.swift in Sources */,
 				BF2C61CA29DBBD45000C0B26 /* WinnersRibbon.swift in Sources */,
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
 				BCECABFE29D4DD4700615452 /* OrangeButton.swift in Sources */,
 				BCECAC0229D501CD00615452 /* CodeTextfield.swift in Sources */,
-				BF28804A29D3C19500036B84 /* ContentViewModel.swift in Sources */,
 				BF2C61C629DBB6F5000C0B26 /* WinnersViewModel.swift in Sources */,
 				BC5DED8629DE181700638CC3 /* ImagePhraseShown.swift in Sources */,
 				BF2C61CC29DBBFCA000C0B26 /* CircularText.swift in Sources */,
@@ -377,7 +398,9 @@
 				BF2C61B329DA0C32000C0B26 /* PodiumView.swift in Sources */,
 				BF2C61C529DBB6F5000C0B26 /* WinnersView.swift in Sources */,
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
+				5B2746CA29D4BF6E00C60BCF /* LoginView.swift in Sources */,
 				BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */,
+				5B7559F529E492370006A9D4 /* ContentViewModel.swift in Sources */,
 				86FB43BF29DBBBFB00991337 /* ThreadViewModel.swift in Sources */,
 				BF28804929D3C19500036B84 /* ContentView.swift in Sources */,
 				BC5DED8529DE181700638CC3 /* PageBackground.swift in Sources */,
@@ -438,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -492,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -507,10 +530,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = client/client.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"client/Preview Content\"";
-				DEVELOPMENT_TEAM = M3SKJK6V42;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = client/Info.plist;
@@ -536,10 +560,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = client/client.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"client/Preview Content\"";
-				DEVELOPMENT_TEAM = M3SKJK6V42;
+				DEVELOPMENT_TEAM = FQJGC4G68L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = client/Info.plist;
