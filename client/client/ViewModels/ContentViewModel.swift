@@ -3,7 +3,7 @@
 //  client
 //
 //  Created by sml on 28/03/23.
-//  
+//
 //
 
 import SwiftUI
@@ -44,7 +44,7 @@ final class ContentViewModel: ObservableObject {
 
                 return false
             }
-        }        
+        }
         return true
         
     }
