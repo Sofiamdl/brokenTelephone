@@ -1,7 +1,7 @@
-import { Socket } from "socket.io";
+import { Server, Socket } from "socket.io";
 import { IGamesRepository } from "../../repositories/games-repository";
 
-export async function joinRoom(socket: Socket, gameRepository: IGamesRepository, data: any) {
+export async function joinRoom(socket: Socket, gameRepository: IGamesRepository, data: any, io: Server) {
     console.log("Joining room...")
 
     const roomCode = data;
@@ -20,6 +20,13 @@ export async function joinRoom(socket: Socket, gameRepository: IGamesRepository,
             score: 0,
         }, roomCode)
 
+        const user = await gameRepository.findUserInRoom(socket.id, roomCode)
+
+        if(!user) {
+            throw new Error();
+        }
+
+        io.to(roomCode).emit("new_player", user?.name);
         socket.emit("joined", true)
     }
 }
