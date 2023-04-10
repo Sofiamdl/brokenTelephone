@@ -13,7 +13,7 @@ class RoomViewModel: ObservableObject {
     @Published var selectedColor: Color = Color.projectRed
     @Published var timerBarWidthOrange = 936.0
     @Published var timerBarWidthYellow = 0.0
-    @Published var timeRemaining = 50 // 30s * 10
+    @Published var timeRemaining = 300 // 30s * 10
     @Published var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Published var timerBarDiminish = 3.14 //942 divided by 300
     
@@ -46,13 +46,10 @@ class RoomViewModel: ObservableObject {
     }
     
     func gameModeChange() {
-        if timerWentZero() {
-            if gameStatus == .userIsDrawing {
-               gameStatus = .userIsGuessing
-            } else {
-                gameStatus = .userIsDrawing
-            }
-     
+        if gameStatus == .userIsDrawing {
+           gameStatus = .userIsGuessing
+        } else {
+            gameStatus = .userIsDrawing
         }
     }
     

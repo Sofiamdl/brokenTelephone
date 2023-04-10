@@ -10,7 +10,7 @@ import PencilKit
 
 struct RoomView: View {
     @EnvironmentObject var coordinator: Coordinator
-    @ObservedObject var viewModel = RoomViewModel()
+    @EnvironmentObject var viewModel: RoomViewModel
     @EnvironmentObject var socket: SocketViewModel
     let WIDTH: CGFloat = 936.0
     let HEIGHT: CGFloat = 588.0
@@ -69,12 +69,13 @@ struct RoomView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
                             .onReceive(viewModel.timer) { _ in
+                                print("aq", viewModel.gameStatus)
                                 if viewModel.gameStatus != .userIsWaiting {
                                     viewModel.timeSubtraction()
                                 }
                                 if finished {
                                     viewModel.changeGameStatusToDrawing()
-//                                    finished = false
+                                    finished = false
                                 }
                             }
                         
@@ -145,6 +146,7 @@ struct RoomView: View {
                         sendCanvas()
                     } else if viewModel.gameStatus == .userIsGuessing {
                         socket.socket.emit("game", viewModel.userGuess)
+                        viewModel.userGuess = ""
                     }
                     viewModel.gameModeChange()
                     socket.timeout = false
@@ -193,6 +195,7 @@ extension RoomView {
             if let data = uiImage.pngData() {
                 let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
                 socket.socket.emit("game", strBase64)
+                viewModel.lines = []
             }
         }
     }

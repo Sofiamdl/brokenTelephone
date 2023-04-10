@@ -11,6 +11,7 @@ import Charts
 struct AppNavigation: View {
     @ObservedObject var coordinator = Coordinator()
     @ObservedObject var socket = SocketViewModel()
+    @ObservedObject var room = RoomViewModel()
 
     var body: some View {
         NavigationStack(path: $coordinator.path) {
@@ -18,6 +19,7 @@ struct AppNavigation: View {
         }
         .environmentObject(coordinator)
         .environmentObject(socket)
+        .environmentObject(room)
         .navigationBarBackButtonHidden(true)
     }
     
