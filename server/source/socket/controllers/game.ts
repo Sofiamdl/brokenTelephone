@@ -2,14 +2,17 @@ import { Server, Socket } from "socket.io";
 import { IGamesRepository } from "../../repositories/games-repository";
 import { IGameObject, IThreadsRepository } from "../../repositories/threads-repository";
 import { GameIndexCalculator } from "../../utilities/game-index-calculator";
+import { randomUUID } from "crypto";
 
 export async function game(socket: Socket, gameRepository: IGamesRepository, threadRepository: IThreadsRepository, gameIndexCalculator: GameIndexCalculator, data: any, io: Server) {
     const room = await gameRepository.findRoomByUserId(socket.id);
 
     const gameObject: IGameObject = {
+        id: randomUUID(),
         data,
         type: (room.round % 2) === 0 ? "phrase" : "drawing",
         userId: socket.id,
+        votes: 0,
     }
 
     const userIndex = room.users.findIndex(item => item.id === socket.id);

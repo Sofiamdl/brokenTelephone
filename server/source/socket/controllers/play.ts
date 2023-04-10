@@ -2,8 +2,10 @@ import { Server, Socket } from "socket.io";
 import { IGamesRepository } from "../../repositories/games-repository";
 import { IPhrasesRepository } from "../../repositories/phrases-repository";
 import { IGameObject, IThreadsRepository } from "../../repositories/threads-repository";
+import { randomUUID } from "crypto";
+import { IVotedRepository } from "../../repositories/voted-repository";
 
-export async function play(socket: Socket, phrasesRepository: IPhrasesRepository, gameRepository: IGamesRepository, threadRepository: IThreadsRepository, data: any, io: Server) {
+export async function play(socket: Socket, phrasesRepository: IPhrasesRepository, gameRepository: IGamesRepository, threadRepository: IThreadsRepository, votedRepository: IVotedRepository, data: any, io: Server) {
     const roomCode = data;
 
     const room = await gameRepository.findRoomByCode(roomCode)
@@ -22,11 +24,13 @@ export async function play(socket: Socket, phrasesRepository: IPhrasesRepository
 
     for (let i = 0; i< users.length; i++){
         io.to(users[i].id).emit("phrase", phrases[i])
-        const userGameObject: IGameObject = { data:phrases[i], type: "phrase", userId:users[i].id}
+        const userGameObject: IGameObject = { id: randomUUID(), data:phrases[i], type: "phrase", userId:users[i].id, votes: 0}
         await threadRepository.addGameObjectToThread(users[i].id, userGameObject)
     }
 
     io.to(roomCode).emit("start-timer", "")
 
+    const { code } = await gameRepository.findRoomByUserId(socket.id);
+    await votedRepository.create(code);
 
 }
