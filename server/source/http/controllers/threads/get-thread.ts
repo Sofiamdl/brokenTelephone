@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { makeGetThreadUseCase } from "../../../use-cases/factories/make-get-thread";
 
-export async function getRequest(request: FastifyRequest, reply: FastifyReply) {
+export async function getThread(request: FastifyRequest, reply: FastifyReply) {
     const getThreadParamsSchema = z.object({
         id: z.string()
     })
