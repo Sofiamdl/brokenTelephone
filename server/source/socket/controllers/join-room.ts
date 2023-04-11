@@ -13,6 +13,11 @@ export async function joinRoom(socket: Socket, gameRepository: IGamesRepository,
         socket.emit("joined", false)
     } else {
         socket.join(roomCode);
+
+        for(const user of room.users) {
+            socket.emit("new-player", user.id);
+        }
+
         await gameRepository.addUserToGameRoom({
             id: socket.id,
             name: socket.id,
@@ -20,23 +25,7 @@ export async function joinRoom(socket: Socket, gameRepository: IGamesRepository,
             score: 0,
         }, roomCode)
 
-        const user = await gameRepository.findUserInRoom(socket.id, roomCode)
-
-        if(!user) {
-            throw new Error();
-        }
-
-        io.to(roomCode).emit("new_player", user.name);
-
-        const room = await gameRepository.findRoomByCode(roomCode);
-
-        if(!room) {
-            throw new Error()
-        }
-
-        for(const user of room.users) {
-            socket.emit("new_player", user);
-        }
+        io.to(roomCode).emit("new-player", socket.id);
 
         socket.emit("joined", true)
     }
