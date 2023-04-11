@@ -15,4 +15,5 @@ export async function createRoom(socket: Socket, gameRepository: IGamesRepositor
 
     socket.join(roomCode);
     socket.emit("code", roomCode);
+    socket.emit("new-player", socket.id);
 }
