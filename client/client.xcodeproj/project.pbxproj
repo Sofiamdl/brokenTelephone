@@ -47,6 +47,8 @@
 		BF2C61CA29DBBD45000C0B26 /* WinnersRibbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61C929DBBD45000C0B26 /* WinnersRibbon.swift */; };
 		BF2C61CC29DBBFCA000C0B26 /* CircularText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61CB29DBBFCA000C0B26 /* CircularText.swift */; };
 		BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */; };
+		BF668E6829E5DE710037CBDE /* UsersGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF668E6729E5DE710037CBDE /* UsersGrid.swift */; };
+		BF668E6C29E5DEC50037CBDE /* ViewModifierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		BF2C61C929DBBD45000C0B26 /* WinnersRibbon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersRibbon.swift; sourceTree = "<group>"; };
 		BF2C61CB29DBBFCA000C0B26 /* CircularText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularText.swift; sourceTree = "<group>"; };
 		BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
+		BF668E6729E5DE710037CBDE /* UsersGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersGrid.swift; sourceTree = "<group>"; };
+		BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 				BC8C868329DCB295001238D6 /* ColorPicker.swift */,
 				BC8C868729DD0981001238D6 /* TimerBar.swift */,
 				BC5DED8329DE181700638CC3 /* ImagePhraseShown.swift */,
+				BF668E6729E5DE710037CBDE /* UsersGrid.swift */,
 				BC5DED8229DE181700638CC3 /* PageBackground.swift */,
 				BC5DED8129DE181700638CC3 /* SFSymbol.swift */,
 			);
@@ -202,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				BF28805629D3CE5E00036B84 /* Navigation */,
-				BC8C868B29DD0F15001238D6 /* RoomView */,
 				BF28805029D3C35800036B84 /* Core */,
 				BC69263629D51DF200809A16 /* LoadingRoomView.swift */,
 			);
@@ -226,6 +230,7 @@
 			children = (
 				BCB9048529D4B0A80021E691 /* Fonts */,
 				BF28804D29D3C25B00036B84 /* Color.swift */,
+				BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 		BF28805029D3C35800036B84 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BC8C868B29DD0F15001238D6 /* RoomView */,
 				86FB43BB29DBBB9C00991337 /* ThreadView */,
 				BF2C61C129DBB6DB000C0B26 /* WinnersView */,
 				BF2C61B129DA0C01000C0B26 /* PodiumView */,
@@ -372,6 +378,7 @@
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
 				5B2746D129D777AE00C60BCF /* LoginViewModel.swift in Sources */,
 				BF2C61CA29DBBD45000C0B26 /* WinnersRibbon.swift in Sources */,
+				BF668E6C29E5DEC50037CBDE /* ViewModifierExtension.swift in Sources */,
 				BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */,
 				BCECABFE29D4DD4700615452 /* OrangeButton.swift in Sources */,
 				BCECAC0229D501CD00615452 /* CodeTextfield.swift in Sources */,
@@ -382,6 +389,7 @@
 				86FB43BD29DBBBAF00991337 /* ThreadView.swift in Sources */,
 				BF28801C29C8CE8000036B84 /* clientApp.swift in Sources */,
 				BF28804E29D3C25B00036B84 /* Color.swift in Sources */,
+				BF668E6829E5DE710037CBDE /* UsersGrid.swift in Sources */,
 				BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */,
 				BC69263729D51DF200809A16 /* LoadingRoomView.swift in Sources */,
 				BC69263929D614A300809A16 /* Coordinator.swift in Sources */,
