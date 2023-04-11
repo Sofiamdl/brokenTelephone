@@ -24,11 +24,11 @@ struct AppNavigation: View {
     }
     
     private var selectScreen: some View {
-        ContentView()
+        HomeView()
             .navigationDestination(for: Route.self){ route in
                 switch route {
                 case .home:
-                    ContentView()
+                    HomeView()
                 case .loadingRoom:
                     LoadingRoomView()
                 case .gameRoom:

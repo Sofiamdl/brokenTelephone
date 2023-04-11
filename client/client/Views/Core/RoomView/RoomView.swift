@@ -24,47 +24,9 @@ struct RoomView: View {
             .overlay(
                 HStack{
                     VStack(spacing: 0){
-                        Rectangle()
-                            .foregroundColor(.clear)
-                        Rectangle()
-                            .foregroundColor(.fontColor)
-                            .overlay(
-                                VStack(spacing: 5){
-                                    Text("Chama os amigos")
-                                        .font(projectFont(style: .extraBold, size: 20))
-                                    Text("\(socket.gameRoom)")
-                                        .font(projectFont(style: .extraBold, size: 20))
-                                }
-                                    .frame(width: 300)
-                            )
-                        
-                        Rectangle()
-                            .foregroundColor(.loadingRoomBackground)
-                            .frame(height: 424)
-                            .overlay(
-                                LazyVGrid(columns: column) {
-                                    ForEach(socket.users, id: \.self) { user in
-                                        HStack(spacing: 30){
-                                            Image("zeca-pholder")
-                                                .resizable()
-                                                .frame(width: 64, height: 64)
-                                                .cornerRadius(100)
-                                            Text(user)
-                                                .frame(alignment: .leading)
-                                                .font(projectFont(style: .extraBold, size: 15))
-                                                .foregroundColor(Color.fontColor)
-                                            Spacer()
-                                        }
-                                        .padding(.leading, 10)
-                                        
-                                        
-                                    }
-                                }
-                            )
-                        Rectangle()
-                            .foregroundColor(.projectWhite)
-                        
-                        
+                        Spacer()
+                        UsersGrid(roomCode: socket.gameRoom, userName: $socket.users)
+                            .frame(height: 685)
                     }
                     VStack(alignment: .leading, spacing: 20) {
                         TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
@@ -134,6 +96,7 @@ struct RoomView: View {
                         }
                     })
             )
+            .KeyboardAwarePadding(background: Color.gameRoomBackground)
             .onChange(of: socket.timeStarted, perform: { timeStarted in
                 if timeStarted == true {
                     finished = true

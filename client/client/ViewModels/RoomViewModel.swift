@@ -18,7 +18,6 @@ class RoomViewModel: ObservableObject {
     @Published var timerBarDiminish = 3.14 //942 divided by 300
     
     @Published var gameStatus: GameStatus = .userIsWaiting
-    @Published var gameRoomcode = "1234"
     @Published var userGuess = ""
     
     
