@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: Variables to watch mark as Published. ViewModel also calls API/Core Data
 
-final class ContentViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
     
     
     @Published var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]

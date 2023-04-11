@@ -9,9 +9,9 @@
 import SwiftUI
 import Combine
 
-struct ContentView: View {
+struct HomeView: View {
     
-    @ObservedObject private var viewModel = ContentViewModel()
+    @ObservedObject private var viewModel = HomeViewModel()
     @EnvironmentObject private var coordinator: Coordinator
     @FocusState private var focusedField: Field?
     @EnvironmentObject private var socket: SocketViewModel
@@ -123,6 +123,7 @@ struct ContentView: View {
                         
                     }
             )
+            .KeyboardAwarePadding(background: Color.homePageBackground)
             .onChange(of: socket.joinedRoom, perform: { joinedRoom in
                 if joinedRoom == true {
                     coordinator.goToLoadingPage()
@@ -135,6 +136,6 @@ struct ContentView: View {
 
 struct Content_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }
