@@ -15,8 +15,20 @@ class Coordinator: ObservableObject {
         path.removeLast(1)
     }
     
+    func popView(view: Route) {
+        for element in path {
+            if element == view {
+                path.remove(at:(path.firstIndex(of: element) ?? 0))
+            }
+        }
+    }
+    
     func gotoHomePage() {
         path.removeLast(path.count)
+    }
+
+    func goTo(view: Route) {
+        path.append(view)
     }
 
     func goToHomePage() {

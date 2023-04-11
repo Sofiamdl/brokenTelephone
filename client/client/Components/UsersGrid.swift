@@ -11,14 +11,14 @@ struct UsersGrid: View {
     let roomCode: String
     let column = [GridItem(.flexible())]
     @Binding var userName: [String]
-
+    
     var body: some View {
         VStack(spacing: 0){
-
+            
             Rectangle()
                 .foregroundColor(.fontColor)
                 .frame(height: 142)
-
+            
                 .overlay(
                     VStack(spacing: 5){
                         Text("Chama os amigos")
@@ -28,13 +28,13 @@ struct UsersGrid: View {
                         
                         
                     }
-           
+                    
                 )
             
             Rectangle()
                 .foregroundColor(.loadingRoomBackground)
                 .overlay(
-                                        LazyVGrid(columns: column) {
+                    LazyVGrid(columns: column) {
                         ForEach(0..<self.userName.count, id: \.self) { index in
                             HStack(spacing: 30){
                                 
@@ -52,7 +52,7 @@ struct UsersGrid: View {
                             
                             
                         }
-
+                        
                         
                     }
                 )
@@ -61,8 +61,8 @@ struct UsersGrid: View {
                 .frame(height: 80)
                 .overlay (
                     Text("\(userName.count)/5 jogadores")
-                    .font(projectFont(style: .extraBold, size: 15))
-                    .foregroundColor(Color.black)
+                        .font(projectFont(style: .extraBold, size: 15))
+                        .foregroundColor(Color.black)
                 )
             
             
