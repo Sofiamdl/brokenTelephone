@@ -12,12 +12,11 @@ struct RoomView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: RoomViewModel
     @EnvironmentObject var socket: SocketViewModel
+    
     let WIDTH: CGFloat = 936.0
     let HEIGHT: CGFloat = 588.0
     let column = [GridItem(.flexible())]
-    
-    @State var finished: Bool = false
-    
+        
     var body: some View {
         Color.gameRoomBackground
             .ignoresSafeArea()
@@ -31,25 +30,10 @@ struct RoomView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
                             .onReceive(viewModel.timer) { _ in
-                                print("aq", viewModel.gameStatus)
-                                if viewModel.gameStatus != .userIsWaiting {
                                     viewModel.timeSubtraction()
-                                }
-                                if finished {
-                                    viewModel.changeGameStatusToDrawing()
-                                    finished = false
-                                }
                             }
                         
-                        switch viewModel.gameStatus {
-                        case .userIsWaiting :
-                            if (socket.isHost) {
-                                Button("Começar", action: {
-                                    socket.socket.emit("play", socket.gameRoom)
-                                })
-                            } else {
-                                Text("Esperando o Host começar a partida...")
-                            }
+                        switch viewModel.gameStatus {                            
                         case .userIsDrawing:
                             canva
                                 .overlay(
@@ -97,12 +81,7 @@ struct RoomView: View {
                     })
             )
             .KeyboardAwarePadding(background: Color.gameRoomBackground)
-            .onChange(of: socket.timeStarted, perform: { timeStarted in
-                if timeStarted == true {
-                    finished = true
-                }
-            }
-            )
+            
             .onChange(of: socket.timeout, perform: {timeout in
                 if timeout == true {
                     if viewModel.gameStatus == .userIsDrawing {
@@ -113,9 +92,13 @@ struct RoomView: View {
                     }
                     viewModel.gameModeChange()
                     socket.timeout = false
-                    
                 }
-            })
+            }).onChange(of: socket.gameIsOver) { newValue in
+                if newValue == true {
+                    coordinator.goTo(view: .threadsView)
+                    coordinator.popView(view: .gameRoom)
+                }
+            }
         
     }
     

@@ -17,7 +17,7 @@ class RoomViewModel: ObservableObject {
     @Published var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Published var timerBarDiminish = 3.14 //942 divided by 300
     
-    @Published var gameStatus: GameStatus = .userIsWaiting
+    @Published var gameStatus: GameStatus = .userIsDrawing
     @Published var userGuess = ""
     
     
@@ -29,10 +29,6 @@ class RoomViewModel: ObservableObject {
             return true
         }
         return false
-    }
-    
-    func changeGameStatusToDrawing() -> Void {
-        gameStatus = .userIsDrawing
     }
     
     func timeSubtraction() {

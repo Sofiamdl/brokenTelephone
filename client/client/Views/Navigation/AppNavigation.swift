@@ -12,7 +12,7 @@ struct AppNavigation: View {
     @ObservedObject var coordinator = Coordinator()
     @ObservedObject var socket = SocketViewModel()
     @ObservedObject var room = RoomViewModel()
-
+    
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             selectScreen
@@ -33,8 +33,12 @@ struct AppNavigation: View {
                     LoadingRoomView()
                 case .gameRoom:
                     RoomView()
-                }
+                case .threadsView:
+                    ThreadView()
+                case .availableUsers:
+                    AvailableUsers()
                 }
             }
+    }
     
 }
