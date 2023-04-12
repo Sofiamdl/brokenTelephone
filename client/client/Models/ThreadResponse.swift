@@ -11,8 +11,8 @@ struct RawThread: Codable {
     let data: [ThreadResponse]
 }
 
-struct ThreadResponse: Codable {
-    let data: String
+struct ThreadResponse: Codable, Hashable {
+    var data: String
     let id: String
     let type: String
     let userId: String

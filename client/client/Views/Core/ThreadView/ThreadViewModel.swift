@@ -16,31 +16,22 @@ struct GameObject: Hashable, Identifiable {
 
 
 final class ThreadViewModel: ObservableObject {
-    @Published var threads: [Thread] = [
-        Thread(gameObjects: [
-            GameObject(isImage: false, data: ""),
-            GameObject(isImage: true, data: ""),
-            GameObject(isImage: false, data: ""),
-            GameObject(isImage: true, data: ""),
-        ])
-    ]
+    @Published var threads: [ThreadResponse] = []
     
     @Published var objectCount: Int = 0
-        
-    init() {
-        let pngData = UIImage(named: "desenho-teste")?.pngData()
-        let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
-        
-        for singleThread in threads {
-            for var gameObject in singleThread.gameObjects {
-                if gameObject.isImage {
-                    gameObject.data = strBase64 ?? ""
-                }
-                objectCount += 1
-            }
-        }
-    }
-        
+    @Published var userIndex: Int = 0
+    
+//    init() {
+//        let pngData = UIImage(named: "desenho-teste")?.pngData()
+//        let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
+//        
+//        for thread in 0..<threads.count {
+//            if threads[thread].type == "drawing" {
+//                threads[thread].data = strBase64 ?? ""
+//            }
+//        }
+//    }
+    
     func teste() {
         print("back-next")
     }
@@ -49,9 +40,6 @@ final class ThreadViewModel: ObservableObject {
         return objectCount % 4
     }
     
-    func getThread() {
-        
-    }
     
     func returnThreads(user: String) async -> [ThreadResponse] {
         var _threads: [ThreadResponse] = []
@@ -68,6 +56,7 @@ final class ThreadViewModel: ObservableObject {
         }
         
         semaphore.wait()
+        print(_threads)
         return _threads
     }
     
@@ -100,7 +89,7 @@ final class ThreadViewModel: ObservableObject {
                 let threadsResponse = try decoder.decode(RawThread.self, from: data)
                 completion(threadsResponse.data)
                 return
-
+                
             } catch  {
                 print(error)
                 completion(nil)

@@ -12,12 +12,19 @@ struct ImagePhraseShown: View, Identifiable {
     let isImage: Bool
     let info: String
     @State var isChosen: Bool
-    
+
+    init(isImage: Bool, info: String, isChosen: Bool) {
+        self.isImage = isImage
+        self.info = info
+        self.isChosen = isChosen
+        print("print aqui:", info)
+    }
     var body: some View {
         isImage ?
         AnyView(ZStack {
-            Image(info)
+            Image(uiImage: UIImage(data: Data(info.utf8)) ?? UIImage())
                 .resizable()
+            
                 .aspectRatio(contentMode: .fit)
             VStack (alignment: .trailing){
                 Spacer()
