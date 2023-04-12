@@ -13,9 +13,7 @@ struct GameObject: Hashable, Identifiable {
     var data: String
 }
 
-struct Thread: Hashable {
-    var gameObjects: [GameObject]
-}
+
 
 final class ThreadViewModel: ObservableObject {
     @Published var threads: [Thread] = [
@@ -49,6 +47,10 @@ final class ThreadViewModel: ObservableObject {
     
     func getSquareAmount() -> Int {
         return objectCount % 4
+    }
+    
+    func getThread() {
+        
     }
 }
 

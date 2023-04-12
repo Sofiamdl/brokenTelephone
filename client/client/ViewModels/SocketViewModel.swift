@@ -73,6 +73,15 @@ final class SocketViewModel: ObservableObject {
             print("Game status: ", self.gameIsOver)
         }
         
+        socket.on("threads") { (data, ack) in
+            let rawData = data[0] as Data
+            
+            
+            let decoder = JSONDecoder()
+            
+            decoder.decode(RawThread.self, from: data[0] as? Data ?? Data())
+        }
+        
         
         socket.connect()
     }

@@ -10,11 +10,14 @@ import SwiftUI
 struct ThreadViewObject: Identifiable {
     let id = UUID().uuidString
     let object: ImagePhraseShown
+    
+    
 }
 
 struct ThreadView: View {
     @ObservedObject private var viewModel = ThreadViewModel()
-    
+    @EnvironmentObject var socket: SocketViewModel
+
     var body: some View {
         ZStack {
             PageBackground(backFunction: viewModel.teste, nextFunction: viewModel.teste)
@@ -71,6 +74,9 @@ struct ThreadView: View {
                             }
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
+                    Button("GET THREADS") {
+                        socket.socket.emit("get-threads", "")
+                    }
                 }
             }
         }

@@ -59,6 +59,16 @@ export async function createGameRooms(app: FastifyInstance)  {
                 vote(socket, gameRepository, votedRepository, threadRepository, data);
             })
 
+            socket.on("get-threads", async function(data) {
+                const room = await gameRepository.findRoomByUserId(socket.id);
+
+                for(const user of room.users) {
+                    const thread = await threadRepository.findThreadByUserId(user.id);
+                    app.io.to(room.code).emit("threads", { data: thread });
+                    console.log(thread)
+                }
+            })
+
 
         })
 
