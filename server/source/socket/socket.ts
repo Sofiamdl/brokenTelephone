@@ -22,10 +22,10 @@ export async function createGameRooms(app: FastifyInstance)  {
     app.register(fastifySocketIO);
 
     const gameRepository: IGamesRepository = new InMemoryGamesRepository();
-    const threadRepository: IThreadsRepository = new InMemoryThreadRepository();
     const phrasesRepository: IPhrasesRepository = new InMemoryPhrasesRepository();
     const votedRepository: IVotedRepository = new InMemoryVotedRepository();
     const gameIndexCalculator: GameIndexCalculator = new GameIndexCalculator();
+    const threadRepository = InMemoryThreadRepository.getInstance();
 
     app.ready(err => {
         if (err) {

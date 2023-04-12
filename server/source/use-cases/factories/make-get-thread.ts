@@ -2,7 +2,7 @@ import { InMemoryThreadRepository } from "../../repositories/in-memory/inmemory-
 import { GetThreadUseCase } from "../get-thread";
 
 export function makeGetThreadUseCase() {
-    const threadsRepository = new InMemoryThreadRepository();
+    const threadsRepository = InMemoryThreadRepository.getInstance();
     const getThreadUseCase = new GetThreadUseCase(threadsRepository);
 
     return getThreadUseCase;

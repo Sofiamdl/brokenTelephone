@@ -75,7 +75,11 @@ struct ThreadView: View {
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
                     Button("GET THREADS") {
-                        socket.socket.emit("get-threads", "")
+                        Task {
+                            let user = socket.users[0]
+                            let threads = await viewModel.returnThreads(user: user)
+                            print(threads)
+                        }
                     }
                 }
             }

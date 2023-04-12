@@ -9,7 +9,7 @@ import Foundation
 import SocketIO
 
 final class SocketViewModel: ObservableObject {
-    let manager = SocketManager(socketURL: URL(string: "https://3607-150-161-70-2.ngrok-free.app")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: "https://6624-150-161-70-2.ngrok-free.app")!, config: [.log(true), .compress])
     
     @Published var socket: SocketIOClient
     @Published var isHost: Bool = false
@@ -74,12 +74,7 @@ final class SocketViewModel: ObservableObject {
         }
         
         socket.on("threads") { (data, ack) in
-            let rawData = data[0] as Data
             
-            
-            let decoder = JSONDecoder()
-            
-            decoder.decode(RawThread.self, from: data[0] as? Data ?? Data())
         }
         
         
