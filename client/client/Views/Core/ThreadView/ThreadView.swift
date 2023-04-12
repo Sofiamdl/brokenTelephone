@@ -49,23 +49,23 @@ struct ThreadView: View {
                 }
                 Group {
                     VStack(alignment: .center) {
-                        Text("O personagem era:")
+                        Text("[placeholder: frase relativa ao personagem]")
                             .font(projectFont(style: .extraBold, size: 30))
                             .foregroundColor(Color.fontColor)
                             .offset(y: 128)
                         TabView {
                             VStack {
-                                Text("Capivara")
-                                    .font(projectFont(style: .extraBold, size: 40))
+                                Text("Animal típico da região do pantanal")
+                                    .font(projectFont(style: .light, size: 30))
                                     .foregroundColor(Color.fontColor)
-                                GifAnimationView(imageName: "C", imageLastIndex: 4)
+                                GifAnimationView(imageName: "C", imageLastIndex: 4, frameSize: CGSize(width: 400, height: 400))
                                     
                                 
                             }
                             
                             VStack {
-                                Text("Guaraná")
-                                    .font(projectFont(style: .extraBold, size: 40))
+                                Text("Planta típica da região norte")
+                                    .font(projectFont(style: .light, size: 30))
                                     .foregroundColor(Color.fontColor)
                                 MoveAnimation()
                                
@@ -73,20 +73,20 @@ struct ThreadView: View {
                             
                             VStack {
                                 Text("Arara")
-                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .font(projectFont(style: .light, size: 30))
                                     .foregroundColor(Color.fontColor)
-                                GifAnimationView(imageName: "A", imageLastIndex: 4)                            }
+                                GifAnimationView(imageName: "A", imageLastIndex: 5,  frameSize: CGSize(width: 400, height: 400))                            }
                             VStack {
                                 Text("Cuscuz")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                GifAnimationView(imageName: "CZ", imageLastIndex: 2)                            }
+                                GifAnimationView(imageName: "CZ", imageLastIndex: 2,  frameSize: CGSize(width: 400, height: 400))                            }
 
                             VStack {
                                 Text("Pandeiro")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                GifAnimationView(imageName: "P", imageLastIndex: 2)                            }
+                                GifAnimationView(imageName: "P", imageLastIndex: 2,  frameSize: CGSize(width: 400, height: 400))                            }
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
                     Button("GET THREADS") {
