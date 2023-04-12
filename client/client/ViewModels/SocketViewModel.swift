@@ -9,6 +9,7 @@ import Foundation
 import SocketIO
 
 final class SocketViewModel: ObservableObject {
+
     let manager = SocketManager(socketURL: URL(string: "https://6624-150-161-70-2.ngrok-free.app")!, config: [.log(true), .compress])
     
     @Published var socket: SocketIOClient
@@ -79,6 +80,19 @@ final class SocketViewModel: ObservableObject {
         
         
         socket.connect()
+    }
+    
+    func reset() {
+        isHost = false
+        images = []
+        gameRoom = ""
+        joinedRoom = false
+        users = []
+        timeStarted = false
+        timeout = false
+        currentPhrase = ""
+        currentImage = Data()
+        gameIsOver = false
     }
     
 }

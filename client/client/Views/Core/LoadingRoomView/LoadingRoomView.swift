@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingRoomView: View {
     @EnvironmentObject var coordinator: Coordinator
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timerMax = 2
     @State var navigationBarBackButtonHidden = true
 
@@ -39,18 +39,18 @@ struct LoadingRoomView: View {
                     
                 }
                     .padding(130)
-                    .onReceive(timer) { _ in
-                        if timerMax > 0 {
-                            self.timerMax = timerMax - 1
-                        }
-                        if timerMax == 0 {
-                            self.timer.upstream.connect().cancel()
-                            
-                            coordinator.goToGameRoom()
-
-                        }
-
-                    }
+//                    .onReceive(timer) { _ in
+//                        if timerMax > 0 {
+//                            self.timerMax = timerMax - 1
+//                        }
+//                        if timerMax == 0 {
+//                            self.timer.upstream.connect().cancel()
+//                            
+//                            coordinator.goToGameRoom()
+//
+//                        }
+//
+//                    }
             )
         
         

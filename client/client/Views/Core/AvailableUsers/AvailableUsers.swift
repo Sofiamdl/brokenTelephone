@@ -31,6 +31,8 @@ struct AvailableUsers: View {
                         }
                     } else {
                         Text("Esperando o Host começar a partida...")
+                            .font(projectFont(style: .extraBold, size: 20))
+                            .foregroundColor(Color.projectWhite)
                     }
                   
                 }

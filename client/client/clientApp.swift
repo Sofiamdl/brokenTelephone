@@ -11,10 +11,7 @@ import SwiftUI
 struct clientApp: App {
     var body: some Scene {
         WindowGroup {
-
             AppNavigation()
-
-            
 
         }
     }

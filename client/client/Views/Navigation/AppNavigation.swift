@@ -32,11 +32,11 @@ struct AppNavigation: View {
                 case .loadingRoom:
                     LoadingRoomView()
                 case .gameRoom:
-                    RoomView()
+                    RoomView().navigationBarHidden(true)
                 case .threadsView:
-                    ThreadView()
+                    ThreadView().navigationBarHidden(true)
                 case .availableUsers:
-                    AvailableUsers()
+                    AvailableUsers().navigationBarHidden(true)
                 }
             }
     }

@@ -55,23 +55,38 @@ struct ThreadView: View {
                             .offset(y: 128)
                         TabView {
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Capivara")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
+                                GifAnimationView(imageName: "C", imageLastIndex: 4)
+                                    
+                                
                             }
+                            
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Guaraná")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
+                                MoveAnimation()
+                               
                             }
+                            
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Arara")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
-                            }
+                                GifAnimationView(imageName: "A", imageLastIndex: 4)                            }
+                            VStack {
+                                Text("Cuscuz")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                GifAnimationView(imageName: "CZ", imageLastIndex: 2)                            }
+
+                            VStack {
+                                Text("Pandeiro")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                GifAnimationView(imageName: "P", imageLastIndex: 2)                            }
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
                     Button("GET THREADS") {
@@ -87,8 +102,8 @@ struct ThreadView: View {
     }
 }
 
-//struct ThreadView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ThreadView()
-//    }
-//}
+struct ThreadView_Previews: PreviewProvider {
+    static var previews: some View {
+        ThreadView()
+    }
+}
