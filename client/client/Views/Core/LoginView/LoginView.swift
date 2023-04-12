@@ -151,7 +151,9 @@ struct LoginPage: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Text("NAIÁ")
+                Image("projectTitle")
+//                    .resizable()
+//                    .frame(width: CGFloat?)
                 SignInWithAppleSwiftUIButton()
             }
 

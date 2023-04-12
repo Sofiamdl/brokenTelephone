@@ -13,6 +13,8 @@
 		5B7559F529E492370006A9D4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7559F429E492370006A9D4 /* HomeViewModel.swift */; };
 		86FB43BD29DBBBAF00991337 /* ThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB43BC29DBBBAF00991337 /* ThreadView.swift */; };
 		86FB43BF29DBBBFB00991337 /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB43BE29DBBBFB00991337 /* ThreadViewModel.swift */; };
+		BC4C102029E5F59A00208172 /* GifAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4C101F29E5F59A00208172 /* GifAnimation.swift */; };
+		BC4C102229E728A500208172 /* UpAndDownAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4C102129E728A500208172 /* UpAndDownAnimation.swift */; };
 		BC505CEF29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */; };
 		BC505CF029D4B1A400D4A5F7 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */; };
 		BC505CF329D4B3CA00D4A5F7 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC505CF229D4B3CA00D4A5F7 /* CustomFont.swift */; };
@@ -63,6 +65,8 @@
 		5B7559F429E492370006A9D4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		86FB43BC29DBBBAF00991337 /* ThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadView.swift; sourceTree = "<group>"; };
 		86FB43BE29DBBBFB00991337 /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
+		BC4C101F29E5F59A00208172 /* GifAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifAnimation.swift; sourceTree = "<group>"; };
+		BC4C102129E728A500208172 /* UpAndDownAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpAndDownAnimation.swift; sourceTree = "<group>"; };
 		BC505CED29D4B1A400D4A5F7 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		BC505CEE29D4B1A400D4A5F7 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		BC505CF129D4B27A00D4A5F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				BF668E6729E5DE710037CBDE /* UsersGrid.swift */,
 				BC5DED8229DE181700638CC3 /* PageBackground.swift */,
 				BC5DED8129DE181700638CC3 /* SFSymbol.swift */,
+				BC4C101F29E5F59A00208172 /* GifAnimation.swift */,
+				BC4C102129E728A500208172 /* UpAndDownAnimation.swift */,
 				BF83E74F29E6012300522342 /* UsersGridRoomView.swift */,
 				BF7AF51329E7104200BB3ACE /* GameRoomBackground.swift */,
 			);
@@ -429,7 +435,9 @@
 				BF668E6829E5DE710037CBDE /* UsersGrid.swift in Sources */,
 				BF28805829D3CE8800036B84 /* AppNavigation.swift in Sources */,
 				BC69263729D51DF200809A16 /* LoadingRoomView.swift in Sources */,
+				BC4C102029E5F59A00208172 /* GifAnimation.swift in Sources */,
 				BC69263929D614A300809A16 /* Coordinator.swift in Sources */,
+				BC4C102229E728A500208172 /* UpAndDownAnimation.swift in Sources */,
 				BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */,
 				BF83E75029E6012300522342 /* UsersGridRoomView.swift in Sources */,
 				BC69263B29D61CBF00809A16 /* RoomView.swift in Sources */,

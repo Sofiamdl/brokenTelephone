@@ -34,7 +34,7 @@ struct HomeView: View {
                     Spacer()
                     
                     VStack(alignment: .center, spacing: 80){
-                        Text("NOME")
+                        Text("projectTitle")
                             .font(projectFont(style: .extraBold, size: 100))
                         
                         VStack(alignment: .leading, spacing: 8){
@@ -99,8 +99,7 @@ struct HomeView: View {
                                 
                             })
                             
-                            Spacer()
-                            Spacer()
+                           
                             
                         }
                         .frame(width: 400, alignment: .center)
