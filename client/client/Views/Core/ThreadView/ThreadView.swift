@@ -52,21 +52,35 @@ struct ThreadView: View {
                             .offset(y: 128)
                         TabView {
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Capivara")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-//                                Image("desenho-teste")
-                                GifAnimationView(imageName: "CZ", imageLastIndex: 2)
+                                GifAnimationView(imageName: "C", imageLastIndex: 4)
                                     
                                 
                             }
+                            
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Guaraná")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                MoveAnimation()
+                               
+                            }
+                            
+                            VStack {
+                                Text("Arara")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
                                 GifAnimationView(imageName: "A", imageLastIndex: 4)                            }
                             VStack {
-                                Text("Mula sem cabeça")
+                                Text("Cuscuz")
+                                    .font(projectFont(style: .extraBold, size: 40))
+                                    .foregroundColor(Color.fontColor)
+                                GifAnimationView(imageName: "CZ", imageLastIndex: 2)                            }
+
+                            VStack {
+                                Text("Pandeiro")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
                                 GifAnimationView(imageName: "P", imageLastIndex: 2)                            }

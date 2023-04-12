@@ -12,7 +12,7 @@ struct clientApp: App {
     var body: some Scene {
         WindowGroup {
 
-            ThreadView()
+            HomeView()
 
             
 
