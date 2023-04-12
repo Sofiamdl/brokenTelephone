@@ -23,6 +23,7 @@ struct RoomView: View {
     var body: some View {
         GameRoomBackground(backFunction:{
             viewModel.reset()
+            socket.reset()
             coordinator.gotoHomePage()
         } )
             .ignoresSafeArea()
