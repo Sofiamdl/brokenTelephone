@@ -11,4 +11,6 @@ enum Route {
     case home
     case loadingRoom
     case gameRoom
+    case threadsView
+    case availableUsers
 }

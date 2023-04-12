@@ -51,7 +51,10 @@
 		BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */; };
 		BF668E6829E5DE710037CBDE /* UsersGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF668E6729E5DE710037CBDE /* UsersGrid.swift */; };
 		BF668E6C29E5DEC50037CBDE /* ViewModifierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */; };
+		BF7AF51229E70D2900BB3ACE /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AF51129E70D2900BB3ACE /* UINavigationController.swift */; };
+		BF7AF51429E7104200BB3ACE /* GameRoomBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7AF51329E7104200BB3ACE /* GameRoomBackground.swift */; };
 		BF83E74B29E5DFDD00522342 /* AvailableUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83E74A29E5DFDD00522342 /* AvailableUsers.swift */; };
+		BF83E75029E6012300522342 /* UsersGridRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83E74F29E6012300522342 /* UsersGridRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,7 +104,10 @@
 		BF2C61CD29DBC873000C0B26 /* ResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEnum.swift; sourceTree = "<group>"; };
 		BF668E6729E5DE710037CBDE /* UsersGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersGrid.swift; sourceTree = "<group>"; };
 		BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierExtension.swift; sourceTree = "<group>"; };
+		BF7AF51129E70D2900BB3ACE /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		BF7AF51329E7104200BB3ACE /* GameRoomBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomBackground.swift; sourceTree = "<group>"; };
 		BF83E74A29E5DFDD00522342 /* AvailableUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableUsers.swift; sourceTree = "<group>"; };
+		BF83E74F29E6012300522342 /* UsersGridRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersGridRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 				BC5DED8129DE181700638CC3 /* SFSymbol.swift */,
 				BC4C101F29E5F59A00208172 /* GifAnimation.swift */,
 				BC4C102129E728A500208172 /* UpAndDownAnimation.swift */,
+				BF83E74F29E6012300522342 /* UsersGridRoomView.swift */,
+				BF7AF51329E7104200BB3ACE /* GameRoomBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 				BCB9048529D4B0A80021E691 /* Fonts */,
 				BF28804D29D3C25B00036B84 /* Color.swift */,
 				BF668E6B29E5DEC50037CBDE /* ViewModifierExtension.swift */,
+				BF7AF51129E70D2900BB3ACE /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,11 +439,13 @@
 				BC69263929D614A300809A16 /* Coordinator.swift in Sources */,
 				BC4C102229E728A500208172 /* UpAndDownAnimation.swift in Sources */,
 				BF28805529D3C61200036B84 /* SocketViewModel.swift in Sources */,
+				BF83E75029E6012300522342 /* UsersGridRoomView.swift in Sources */,
 				BC69263B29D61CBF00809A16 /* RoomView.swift in Sources */,
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
 				BC69263D29D6721D00809A16 /* Field.swift in Sources */,
 				BC8C868829DD0981001238D6 /* TimerBar.swift in Sources */,
 				BC8C868429DCB295001238D6 /* ColorPicker.swift in Sources */,
+				BF7AF51229E70D2900BB3ACE /* UINavigationController.swift in Sources */,
 				BC69264429DCA12C00809A16 /* Line.swift in Sources */,
 				BC5DED8429DE181700638CC3 /* SFSymbol.swift in Sources */,
 				BC69264229D74ECE00809A16 /* ViewModifier.swift in Sources */,
@@ -444,6 +455,7 @@
 				BF28805B29D3CF7200036B84 /* Route.swift in Sources */,
 				5B2746CA29D4BF6E00C60BCF /* LoginView.swift in Sources */,
 				BF2C61CE29DBC873000C0B26 /* ResultEnum.swift in Sources */,
+				BF7AF51429E7104200BB3ACE /* GameRoomBackground.swift in Sources */,
 				5B7559F529E492370006A9D4 /* HomeViewModel.swift in Sources */,
 				86FB43BF29DBBBFB00991337 /* ThreadViewModel.swift in Sources */,
 				BF28804929D3C19500036B84 /* HomeView.swift in Sources */,

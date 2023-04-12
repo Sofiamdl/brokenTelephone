@@ -16,12 +16,7 @@ struct HomeView: View {
     @FocusState private var focusedField: Field?
     @EnvironmentObject private var socket: SocketViewModel
     
-    
     var field = 0
-    
-    
-    
-    
     
     var body: some View {
         
@@ -53,7 +48,7 @@ struct HomeView: View {
                             OrangeButton(buttonLabel: "Criar sala", buttonAction: {
                                 socket.socket.emit("create_room", "")
                                 socket.isHost = true
-                                coordinator.goToLoadingPage()
+                                coordinator.goTo(view: .availableUsers)
                             })
                             
                         }
@@ -125,7 +120,8 @@ struct HomeView: View {
             .KeyboardAwarePadding(background: Color.homePageBackground)
             .onChange(of: socket.joinedRoom, perform: { joinedRoom in
                 if joinedRoom == true {
-                    coordinator.goToLoadingPage()
+                    socket.gameRoom = viewModel.returnFinalCode()
+                    coordinator.goTo(view: .availableUsers)
                 }
             })
         
