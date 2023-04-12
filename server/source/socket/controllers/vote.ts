@@ -8,11 +8,25 @@ export async function vote(socket: Socket, gameRepository: IGamesRepository, vot
 
     const gameObjectId = data;
 
-    const { code } = await gameRepository.findRoomByUserId(socket.id);
+    const { code, users } = await gameRepository.findRoomByUserId(socket.id);
 
-    const gameObject = await threadRepository.findGameObjectInThreadById(socket.id, gameObjectId);
+    let gameObject = await threadRepository.findGameObjectInThreadById(socket.id, gameObjectId);
 
     if (!gameObject) {
+        for (const user of users) {
+            gameObject = await threadRepository.findGameObjectInThreadById(user.id, gameObjectId);
+            if(gameObject != null) {
+                break;
+            }
+        }
+    }
+
+    if(!gameObject) {
+        throw new Error();
+    }
+
+    if (!gameObject) {
+        console.log("NULL")
         return null;
     }
 
