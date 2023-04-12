@@ -2,7 +2,21 @@ import { IThreadsRepository, IGameObject, IThreadObject } from "../threads-repos
 
 export class InMemoryThreadRepository implements IThreadsRepository {
 
-    public threads: IThreadObject = {};
+    public threads: IThreadObject;
+
+    private static INSTANCE: InMemoryThreadRepository
+
+    public constructor() {
+        this.threads = {};
+    }
+
+    public static getInstance(): InMemoryThreadRepository {
+        if(!InMemoryThreadRepository.INSTANCE) {
+            InMemoryThreadRepository.INSTANCE = new InMemoryThreadRepository();
+        }
+
+        return InMemoryThreadRepository.INSTANCE;
+    }
 
     async createRoomThreads(users: string[]) {
         for (const user of users) {

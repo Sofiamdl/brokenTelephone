@@ -22,10 +22,10 @@ export async function createGameRooms(app: FastifyInstance)  {
     app.register(fastifySocketIO);
 
     const gameRepository: IGamesRepository = new InMemoryGamesRepository();
-    const threadRepository: IThreadsRepository = new InMemoryThreadRepository();
     const phrasesRepository: IPhrasesRepository = new InMemoryPhrasesRepository();
     const votedRepository: IVotedRepository = new InMemoryVotedRepository();
     const gameIndexCalculator: GameIndexCalculator = new GameIndexCalculator();
+    const threadRepository = InMemoryThreadRepository.getInstance();
 
     app.ready(err => {
         if (err) {
@@ -57,6 +57,16 @@ export async function createGameRooms(app: FastifyInstance)  {
 
             socket.on("vote", async function(data) {
                 vote(socket, gameRepository, votedRepository, threadRepository, data);
+            })
+
+            socket.on("get-threads", async function(data) {
+                const room = await gameRepository.findRoomByUserId(socket.id);
+
+                for(const user of room.users) {
+                    const thread = await threadRepository.findThreadByUserId(user.id);
+                    app.io.to(room.code).emit("threads", { data: thread });
+                    console.log(thread)
+                }
             })
 
 
