@@ -9,49 +9,44 @@ import SwiftUI
 
 struct LoadingRoomView: View {
     @EnvironmentObject var coordinator: Coordinator
-//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timerMax = 2
     @State var navigationBarBackButtonHidden = true
 
     
     
     var body: some View {
-        Color.loadingRoomBackground
-            .ignoresSafeArea()
-            .overlay(
-                VStack (alignment: .center, spacing: 40){
-                    Text("Carregando...")
-                        .font(projectFont(style: .extraBold, size: 60))
-                        .foregroundColor(Color.fontColor)
-                    Text("Você sabia? As havaianas são insipiradas nas sandálias japonesas Zori, feitas de madeira lascada e palha de arroz com tiras de tecido, muito utilizadas por agricultores.")
-                        .font(projectFont(style: .extraBold, size: 30))
-                        .foregroundColor(Color.fontColor)
-                    Spacer()
-                    HStack{
-                            Image("havaianas-pholder")
-                                .resizable()
-                                .frame(width: 30, height: 40)
-                            
-                    }
+//        ZStack {
+         
+            VStack (alignment: .center){
+                Text("Carregando...")
+                    .font(projectFont(style: .extraBold, size: 60))
+                    .foregroundColor(Color.fontColor)
+                Text("Você sabia? As havaianas são insipiradas nas sandálias japonesas Zori, feitas de madeira lascada e palha de arroz com tiras de tecido, muito utilizadas por agricultores.")
+                    .font(projectFont(style: .extraBold, size: 30))
+                    .multilineTextAlignment(TextAlignment.center)
+                    .foregroundColor(Color.fontColor)
+                Spacer()
+                HStack(spacing: 0){
+                    GifAnimationView(imageName: "STEP", imageLastIndex: 3, frameSize: CGSize(width: 1284, height: 311))
+                   
                     
-                    Spacer()
-                    
+//
+                   
+
+                   
+
                     
                 }
-                    .padding(130)
-//                    .onReceive(timer) { _ in
-//                        if timerMax > 0 {
-//                            self.timerMax = timerMax - 1
-//                        }
-//                        if timerMax == 0 {
-//                            self.timer.upstream.connect().cancel()
-//                            
-//                            coordinator.goToGameRoom()
-//
-//                        }
-//
-//                    }
-            )
+                
+                
+                Spacer()
+                
+                
+            }
+            .padding(130)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.loadingRoomBackground)
+
         
         
     }
