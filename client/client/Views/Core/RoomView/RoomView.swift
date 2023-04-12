@@ -12,65 +12,67 @@ struct RoomView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: RoomViewModel
     @EnvironmentObject var socket: SocketViewModel
-    
-    let WIDTH: CGFloat = 936.0
-    let HEIGHT: CGFloat = 588.0
+    @State var HEIGHT: CGFloat = 0
+    @State var image_height: CGFloat = 0
+    @State var changed: Bool = false
+
+    let WIDTH: CGFloat = UIScreen.main.bounds.width * 0.7
     let column = [GridItem(.flexible())]
-        
+
+    
     var body: some View {
-        Color.gameRoomBackground
+        GameRoomBackground(backFunction:{
+            viewModel.reset()
+            coordinator.gotoHomePage()
+        } )
             .ignoresSafeArea()
             .overlay(
-                HStack{
-                    VStack(spacing: 0){
-                        Spacer()
-                        UsersGrid(roomCode: socket.gameRoom, userName: $socket.users)
-                            .frame(height: 685)
-                    }
-                    VStack(alignment: .leading, spacing: 20) {
-                        TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow)
-                            .onReceive(viewModel.timer) { _ in
+                VStack {
+                    Spacer(minLength: 50)
+                    HStack (alignment: .top, spacing: 20){
+                        UsersGridRoomView(roomCode: socket.gameRoom, userName: $socket.users, height: $image_height)
+                            .padding(.leading, 20)
+                            .offset(y: (image_height/10)+20)
+                        VStack(alignment: .leading, spacing: 20) {
+                            TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow, height: $image_height)
+                                .onReceive(viewModel.timer) { _ in
                                     viewModel.timeSubtraction()
-                            }
-                        
-                        switch viewModel.gameStatus {                            
-                        case .userIsDrawing:
-                            canva
-                                .overlay(
+                                }.padding(.trailing, 20)
+                            switch viewModel.gameStatus {
+                            case .userIsDrawing:
+                                ZStack {
+                                    canva
                                     VStack(alignment: .leading){
                                         Image("Rectangle 11")
                                             .overlay(
                                                 Text(socket.currentPhrase)
                                                     .font(projectFont(style: .extraBold, size: 20))
-                                                
                                             )
                                     }
-                                        .frame(height: 588, alignment: .top)
-                                    
-                                )
-                            
-                            ColorPickerView(selectedColor: $viewModel.selectedColor)
-                                .onChange(of: viewModel.selectedColor) {
-                                    newColor in
-                                    viewModel.currentLine.color =  newColor
+                                    .frame(height: HEIGHT, alignment: .top)
                                 }
-                            
-                            
-                        case .userIsGuessing:
-                            Image(uiImage: UIImage(data: socket.currentImage) ?? UIImage() )
-                                .resizable()
-                                .frame (width: 936, height: 588)
-                            
-                            TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
-                                .font(projectFont(style: .extraBold, size: 20))
-                                .frame(width: 888)
-                                .shadow(radius: 5)
-                                .padding(.horizontal, 24)
-                                .padding(.vertical, 44)
-                                .background(Color.white)
+                                ColorPickerView(selectedColor: $viewModel.selectedColor, width: $HEIGHT)
+                                    .onChange(of: viewModel.selectedColor) {
+                                        newColor in
+                                        viewModel.currentLine.color =  newColor
+                                    }
+                                
+                                
+                            case .userIsGuessing:
+                                Image(uiImage: UIImage(data: socket.currentImage) ?? UIImage())
+                                    .resizable()
+                                    .frame(width: WIDTH, height: image_height)
+                                
+                                TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
+                                    .font(projectFont(style: .extraBold, size: 20))
+                                    .frame(width: WIDTH-48)
+                                    .shadow(radius: 5)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, image_height/15)
+                                    .background(Color.white)
+                            }
                         }
                     }
-                }
                     .onChange(of: viewModel.timeRemaining, perform: {
                         _ in
                         if viewModel.timerWentZero() {
@@ -79,9 +81,10 @@ struct RoomView: View {
                             }
                         }
                     })
+                }
             )
             .KeyboardAwarePadding(background: Color.gameRoomBackground)
-            
+        
             .onChange(of: socket.timeout, perform: {timeout in
                 if timeout == true {
                     if viewModel.gameStatus == .userIsDrawing {
@@ -112,13 +115,25 @@ extension RoomView {
                 var path = Path()
                 path.addLines(line.points)
                 context.stroke(path, with: .color(line.color), lineWidth: line.lineWidth)
-                
             }
-            
         }
-        .frame (width: WIDTH, height: HEIGHT)
-        
-        
+        .aspectRatio(CGSize(width: 936.0, height: 588.0), contentMode: .fit)
+        .frame (width: WIDTH)
+        .background(
+            GeometryReader { proxy in
+                Color.clear
+                    .onAppear{
+                        HEIGHT = proxy.size.height
+                        viewModel.timerBarWidthOrange = self.WIDTH
+                        viewModel.timerBarWidth = self.WIDTH
+                        viewModel.changeTimeBarDiminish()
+                        if !changed {
+                            image_height = HEIGHT
+                            changed = true
+                        }
+                    }
+            }
+        )
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
             .onChanged({
                 value in let newPoint = value.location
@@ -131,20 +146,20 @@ extension RoomView {
                  
         )
         .background(Color.white)
-    }
+}
+
+func sendCanvas() {
     
-    func sendCanvas() {
-        
-        let renderer = ImageRenderer(content: canva.frame(width: WIDTH, height: HEIGHT))
-        
-        if let uiImage = renderer.uiImage {
-            if let data = uiImage.pngData() {
-                let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
-                socket.socket.emit("game", strBase64)
-                viewModel.lines = []
-            }
+    let renderer = ImageRenderer(content: canva.frame(width: WIDTH, height: HEIGHT))
+    
+    if let uiImage = renderer.uiImage {
+        if let data = uiImage.pngData() {
+            let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
+            socket.socket.emit("game", strBase64)
+            viewModel.lines = []
         }
     }
+}
 }
 
 struct RoomViewContent_Previews: PreviewProvider {
