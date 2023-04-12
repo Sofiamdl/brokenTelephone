@@ -4,6 +4,7 @@ export interface IGameUser {
     id: string
     score: number
     roomCode: string
+    votes: number
 }
 
 export interface IGameRoom {
@@ -26,4 +27,5 @@ export interface IGamesRepository {
     saveGameUser(user: IGameUser): Promise<IGameUser>;
 
     incrementGameRoomRound(gameRoomCode: string): Promise<IGameRoom>;
+    resetGameRoomRound(gameRoomCode: string): Promise<IGameRoom>;
 }

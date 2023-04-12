@@ -1,9 +1,9 @@
-import { Socket } from "socket.io";
+import { Server, Socket } from "socket.io";
 import { IGamesRepository } from "../../repositories/games-repository";
 import { IVotedRepository } from "../../repositories/voted-repository";
 import { IThreadsRepository } from "../../repositories/threads-repository";
 
-export async function vote(socket: Socket, gameRepository: IGamesRepository, votedRepository: IVotedRepository, threadRepository: IThreadsRepository, data: any) {
+export async function vote(socket: Socket, gameRepository: IGamesRepository, votedRepository: IVotedRepository, threadRepository: IThreadsRepository, data: any, io: Server) {
     console.log("IN voted")
 
     const gameObjectId = data;
@@ -38,4 +38,34 @@ export async function vote(socket: Socket, gameRepository: IGamesRepository, vot
         gameObject.votes++;
         await votedRepository.addGameObjetToVoted(gameObject, code);
     }
+
+    const user = await gameRepository.findUserInRoom(socket.id, code);
+    if(!user) {
+        throw new Error()
+    }
+
+    await gameRepository.saveGameUser({
+        id: user.id,
+        name: user.name,
+        roomCode: user.roomCode,
+        score: user.score,
+        votes: user.votes + 1,
+    })
+
+    const newRoom = await gameRepository.findRoomByCode(code);
+    if(!newRoom) {
+        throw new Error()
+    }
+
+    const goal = newRoom.round * newRoom.users.length;
+    let totalVotes = 0
+
+    for(const user of newRoom.users) {
+        totalVotes += user.votes
+    }
+
+    if (totalVotes === goal) {
+        io.to(code).emit("next-vote");
+        await gameRepository.incrementGameRoomRound(code);
+    } 
 }

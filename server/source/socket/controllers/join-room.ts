@@ -23,6 +23,7 @@ export async function joinRoom(socket: Socket, gameRepository: IGamesRepository,
             name: socket.id,
             roomCode,
             score: 0,
+            votes: 0,
         }, roomCode)
 
         io.to(roomCode).emit("new-player", socket.id);

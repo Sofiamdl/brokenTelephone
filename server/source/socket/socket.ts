@@ -56,7 +56,7 @@ export async function createGameRooms(app: FastifyInstance)  {
             })
 
             socket.on("vote", async function(data) {
-                vote(socket, gameRepository, votedRepository, threadRepository, data);
+                vote(socket, gameRepository, votedRepository, threadRepository, data, app.io);
             })
 
             socket.on("get-threads", async function(data) {

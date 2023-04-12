@@ -13,6 +13,7 @@ export async function hostTimeout(socket: Socket, gameRepository: IGamesReposito
   if (round == room.users.length) {
     io.to(room.code).emit("game-over", "")
     console.log("game-over")
+    await gameRepository.resetGameRoomRound(room.code);
   }
   return
 }
