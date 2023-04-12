@@ -56,7 +56,7 @@ struct ThreadView: View {
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
 //                                Image("desenho-teste")
-                                GifAnimationView(imageName: "A", imageLastIndex: 5)
+                                GifAnimationView(imageName: "CZ", imageLastIndex: 2)
                                     
                                 
                             }
@@ -64,14 +64,12 @@ struct ThreadView: View {
                                 Text("Mula sem cabeça")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
-                            }
+                                GifAnimationView(imageName: "A", imageLastIndex: 4)                            }
                             VStack {
                                 Text("Mula sem cabeça")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
-                            }
+                                GifAnimationView(imageName: "P", imageLastIndex: 2)                            }
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
                 }
