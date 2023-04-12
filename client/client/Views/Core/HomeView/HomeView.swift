@@ -104,8 +104,7 @@ struct HomeView: View {
                                 
                             })
                             
-                            Spacer()
-                            Spacer()
+                           
                             
                         }
                         .frame(width: 400, alignment: .center)

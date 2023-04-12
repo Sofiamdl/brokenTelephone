@@ -55,7 +55,10 @@ struct ThreadView: View {
                                 Text("Mula sem cabeça")
                                     .font(projectFont(style: .extraBold, size: 40))
                                     .foregroundColor(Color.fontColor)
-                                Image("desenho-teste")
+//                                Image("desenho-teste")
+                                GifAnimationView(imageName: "A", imageLastIndex: 5)
+                                    
+                                
                             }
                             VStack {
                                 Text("Mula sem cabeça")
@@ -77,8 +80,8 @@ struct ThreadView: View {
     }
 }
 
-//struct ThreadView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ThreadView()
-//    }
-//}
+struct ThreadView_Previews: PreviewProvider {
+    static var previews: some View {
+        ThreadView()
+    }
+}
