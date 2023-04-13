@@ -81,4 +81,17 @@ final class SocketViewModel: ObservableObject {
         socket.connect()
     }
     
+    func reset() {
+        isHost = false
+        images = []
+        gameRoom = ""
+        joinedRoom = false
+        users = []
+        timeStarted = false
+        timeout = false
+        currentPhrase = ""
+        currentImage = Data()
+        gameIsOver = false
+    }
+    
 }

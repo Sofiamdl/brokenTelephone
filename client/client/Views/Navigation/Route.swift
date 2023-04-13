@@ -13,4 +13,5 @@ enum Route {
     case gameRoom
     case threadsView
     case availableUsers
+    case winnersView
 }

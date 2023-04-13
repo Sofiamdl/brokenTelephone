@@ -21,20 +21,10 @@ final class ThreadViewModel: ObservableObject {
     @Published var objectCount: Int = 0
     @Published var userIndex: Int = 0
     
-//    init() {
-//        let pngData = UIImage(named: "desenho-teste")?.pngData()
-//        let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
-//        
-//        for thread in 0..<threads.count {
-//            if threads[thread].type == "drawing" {
-//                threads[thread].data = strBase64 ?? ""
-//            }
-//        }
-//    }
-    
     func teste() {
         print("back-next")
     }
+    
     
     func getSquareAmount() -> Int {
         return objectCount % 4

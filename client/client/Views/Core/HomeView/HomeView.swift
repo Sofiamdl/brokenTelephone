@@ -20,12 +20,14 @@ struct HomeView: View {
     
     var body: some View {
         
-        Color.homePageBackground
+//        Color.homePageBackground
+        Image("HomeScreenBackground")
+            .resizable()
             .ignoresSafeArea()
             .overlay(
                 HStack{
                     HStack(){
-                        Image("zeca-pholder")
+                        Image("")
                             .resizable()
                             .frame(width: 500, height: 600)
                         
@@ -33,15 +35,18 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    VStack(alignment: .center, spacing: 80){
-                        Text("NOME")
-                            .font(projectFont(style: .extraBold, size: 100))
+                    VStack(alignment: .center, spacing: 30){
+                        Image("projectTitle")
+                            .resizable()
+                            .frame(width: 459, height: 238)
+//                            .font(projectFont(style: .extraBold, size: 100))
                         
                         VStack(alignment: .leading, spacing: 8){
                             Text("Pronto para jogar?")
                                 .font(projectFont(style: .extraBold, size: 40))
                                 .foregroundColor(.fontColor)
                             Text("Crie sua sala e compartilhe o código com amigos")
+                                .lineLimit(3)
                                 .font(projectFont(style: .light, size: 24))
                                 .foregroundColor(.fontColor)
                             
@@ -99,8 +104,7 @@ struct HomeView: View {
                                 
                             })
                             
-                            Spacer()
-                            Spacer()
+                           
                             
                         }
                         .frame(width: 400, alignment: .center)
