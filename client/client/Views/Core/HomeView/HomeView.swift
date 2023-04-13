@@ -18,18 +18,18 @@ struct HomeView: View {
     
     var field = 0
     
+    
+    
     var body: some View {
         
-//        Color.homePageBackground
+        
         Image("HomeScreenBackground")
             .resizable()
             .ignoresSafeArea()
             .overlay(
                 HStack{
                     HStack(){
-                        Image("")
-                            .resizable()
-                            .frame(width: 500, height: 600)
+                        //
                         
                     }
                     
@@ -39,9 +39,9 @@ struct HomeView: View {
                         Image("projectTitle")
                             .resizable()
                             .frame(width: 459, height: 238)
-//                            .font(projectFont(style: .extraBold, size: 100))
                         
-                        VStack(alignment: .leading, spacing: 8){
+                        
+                        VStack(alignment: .center, spacing: 8){
                             Text("Pronto para jogar?")
                                 .font(projectFont(style: .extraBold, size: 40))
                                 .foregroundColor(.fontColor)
@@ -55,31 +55,48 @@ struct HomeView: View {
                                 socket.isHost = true
                                 coordinator.goTo(view: .availableUsers)
                             })
+                            .frame(alignment: Alignment.center)
                             
                         }
                         .frame(width: 400, alignment: .center)
                         
-                        VStack(alignment: .leading, spacing: 32){
+                        VStack(alignment: .center, spacing: 32){
                             Text("Já tenho um código")
+                            
                                 .font(projectFont(style: .extraBold, size: 40))
                                 .foregroundColor(.fontColor)
                             
-                            HStack(spacing: 36){
+                            HStack(alignment: .center, spacing: 36){
                                 
                                 ForEach((0...3), id: \.self) { field in
                                     
                                     viewModel.roomCodeArray[field]
+                                    
+                                        .frame(alignment: Alignment.center)
+                                    
                                         .focused($focusedField, equals: viewModel.fieldArray[field])
                                         .onSubmit {
+                                            print("entrou aq")
+                                            
                                             if viewModel.isFieldValid(field: viewModel.roomCodeArray[field]) {
+                                                print(viewModel.roomCodeArray[field].textBindingManager.text)
                                                 if focusedField != viewModel.fieldArray[3] {
                                                     focusedField = viewModel.fieldArray[field + 1]
                                                 }
                                             }
                                             
-                                            
-                                            
-                                            
+                                        }
+                                    
+                                        .onChange(of: viewModel.roomCodeArray[field].textBindingManager.text) { newValue in
+                                            if newValue != ""{
+                                                print("sou diferente de nd")
+                                                
+                                                //                                            if viewModel.isFieldValid(field: viewModel.roomCodeArray[field]) {
+                                                print("entrou aq")
+                                                if focusedField != viewModel.fieldArray[3] {
+                                                    focusedField = viewModel.fieldArray[field + 1]
+                                                }
+                                            }
                                         }
                                     
                                     
@@ -103,8 +120,10 @@ struct HomeView: View {
                                 
                                 
                             })
+                            .frame(alignment: Alignment.center)
                             
-                           
+                            
+                            
                             
                         }
                         .frame(width: 400, alignment: .center)
@@ -122,7 +141,7 @@ struct HomeView: View {
                         
                     }
             )
-            .KeyboardAwarePadding(background: Color.homePageBackground)
+            .KeyboardAwarePadding(background: Color.gameRoomBackground)
             .onChange(of: socket.joinedRoom, perform: { joinedRoom in
                 if joinedRoom == true {
                     socket.gameRoom = viewModel.returnFinalCode()

@@ -14,10 +14,11 @@ final class HomeViewModel: ObservableObject {
     
     
     @Published var roomCodeArray = [RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield(), RoomCodeTextfield()]
-    @Published var fieldArray = [Field.firstCharacter, Field.secondCharacter, Field.thirdCharacter, Field.fourthCharacter, Field.dismissKeyboard]
+    @Published var fieldArray = [Field.firstCharacter, Field.secondCharacter, Field.thirdCharacter, Field.fourthCharacter]
     @Published var showingAlert = false
+    @Published var isFilled = false
 
-    
+ 
     func returnFinalCode() -> String {
         let code = roomCodeMap()
         let finalCode = "\(code[0])\(code[1])\(code[2])\(code[3])"
@@ -31,6 +32,7 @@ final class HomeViewModel: ObservableObject {
     
     func isFieldValid(field: RoomCodeTextfield) -> Bool {
         if field.textBindingManager.text != "" {
+            isFilled.toggle()
             return true
         }
         return false
