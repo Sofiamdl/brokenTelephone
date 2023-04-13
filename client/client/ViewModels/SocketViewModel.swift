@@ -9,8 +9,7 @@ import Foundation
 import SocketIO
 
 final class SocketViewModel: ObservableObject {
-
-    let manager = SocketManager(socketURL: URL(string: "https://6624-150-161-70-2.ngrok-free.app")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: "http://localhost:3001")!, config: [.log(true), .compress])
     
     @Published var socket: SocketIOClient
     @Published var isHost: Bool = false

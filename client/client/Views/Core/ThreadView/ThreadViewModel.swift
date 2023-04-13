@@ -16,42 +16,20 @@ struct GameObject: Hashable, Identifiable {
 
 
 final class ThreadViewModel: ObservableObject {
-    @Published var threads: [Thread] = [
-        Thread(gameObjects: [
-            GameObject(isImage: false, data: ""),
-            GameObject(isImage: true, data: ""),
-            GameObject(isImage: false, data: ""),
-            GameObject(isImage: true, data: ""),
-        ])
-    ]
+    @Published var threads: [ThreadResponse] = []
     
     @Published var objectCount: Int = 0
-        
-    init() {
-        let pngData = UIImage(named: "desenho-teste")?.pngData()
-        let strBase64 = pngData?.base64EncodedString(options: .lineLength64Characters)
-        
-        for singleThread in threads {
-            for var gameObject in singleThread.gameObjects {
-                if gameObject.isImage {
-                    gameObject.data = strBase64 ?? ""
-                }
-                objectCount += 1
-            }
-        }
-    }
-        
+    @Published var userIndex: Int = 0
+    
     func teste() {
         print("back-next")
     }
+    
     
     func getSquareAmount() -> Int {
         return objectCount % 4
     }
     
-    func getThread() {
-        
-    }
     
     func returnThreads(user: String) async -> [ThreadResponse] {
         var _threads: [ThreadResponse] = []
@@ -72,7 +50,7 @@ final class ThreadViewModel: ObservableObject {
     }
     
     func getThreadFromUser(user: String, completion: @escaping ([ThreadResponse]?) -> ()) {
-        let urlString = "https://6624-150-161-70-2.ngrok-free.app/thread/\(user)"
+        let urlString = "http://localhost:3001/thread/\(user)"
         
         let url = URL(string: urlString)
         
@@ -100,7 +78,7 @@ final class ThreadViewModel: ObservableObject {
                 let threadsResponse = try decoder.decode(RawThread.self, from: data)
                 completion(threadsResponse.data)
                 return
-
+                
             } catch  {
                 print(error)
                 completion(nil)
