@@ -20,10 +20,12 @@ export async function game(socket: Socket, gameRepository: IGamesRepository, thr
     const parentThread = gameIndexCalculator.getParentThreadIndex(room.round - 1, room.users.length, userIndex);
 
     await threadRepository.addGameObjectToThread(room.users[parentThread].id, gameObject);
-
-    const nextIndex = gameIndexCalculator.getIndexToNext(room.round, room.users.length, userIndex);
-
+    let nextIndex
+    if (room.round <= 1){
+        nextIndex = gameIndexCalculator.getIndexToNext(room.round, room.users.length, userIndex);
+    } else {
+        nextIndex = gameIndexCalculator.getIndexToNext(1, room.users.length, userIndex);
+    }
     io.to(room.users[nextIndex].id).emit((room.round % 2) === 0 ? "phrase": "drawing", data);
     
 }
-
