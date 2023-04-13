@@ -22,7 +22,8 @@ final class SocketViewModel: ObservableObject {
     @Published var currentPhrase: String = ""
     @Published var currentImage: Data = Data()
     @Published var gameIsOver: Bool = false
-    
+    @Published var aux: Int = 0
+
     init() {
         socket = manager.defaultSocket
         socket.on("connect") { (data, ack) in
