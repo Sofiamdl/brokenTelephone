@@ -15,10 +15,11 @@ struct RoomView: View {
     @State var HEIGHT: CGFloat = 0
     @State var image_height: CGFloat = 0
     @State var changed: Bool = false
+    @State var aux: Int = 0
 
     let WIDTH: CGFloat = UIScreen.main.bounds.width * 0.7
     let column = [GridItem(.flexible())]
-
+    
     
     var body: some View {
         GameRoomBackground(backFunction:{
@@ -26,68 +27,83 @@ struct RoomView: View {
             socket.reset()
             coordinator.gotoHomePage()
         } )
-            .ignoresSafeArea()
-            .overlay(
-                VStack {
-                    Spacer(minLength: 50)
-                    HStack (alignment: .top, spacing: 20){
-                        UsersGridRoomView(roomCode: socket.gameRoom, userName: $socket.users, height: $image_height)
-                            .padding(.leading, 20)
-                            .offset(y: (image_height/10)+20)
-                        VStack(alignment: .leading, spacing: 20) {
-                            TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow, height: $image_height)
-                                .onReceive(viewModel.timer) { _ in
-                                    viewModel.timeSubtraction()
-                                }.padding(.trailing, 20)
-                            switch viewModel.gameStatus {
-                            case .userIsDrawing:
-                                ZStack {
-                                    canva
-                                    VStack(alignment: .leading){
-                                        Image("Rectangle 11")
-                                            .overlay(
-                                                Text(socket.currentPhrase)
-                                                    .font(projectFont(style: .extraBold, size: 20))
-                                            )
-                                    }
-                                    .frame(height: HEIGHT, alignment: .top)
+        .ignoresSafeArea()
+        .overlay(
+            VStack {
+                Spacer(minLength: 50)
+                HStack (alignment: .top, spacing: 20){
+                    UsersGridRoomView(roomCode: socket.gameRoom, userName: $socket.users, height: $image_height)
+                        .padding(.leading, 20)
+                        .offset(y: (image_height/10)+20)
+                    VStack(alignment: .leading, spacing: 20) {
+                        TimerBar(orangeBarWidth: $viewModel.timerBarWidthOrange, yellowBarWidth: $viewModel.timerBarWidthYellow, height: $image_height)
+                            .onReceive(viewModel.timer) { _ in
+                                viewModel.timeSubtraction()
+                            }.padding(.trailing, 20)
+                        switch viewModel.gameStatus {
+                        case .userIsDrawing:
+                            ZStack {
+                                canva
+                                VStack(alignment: .leading){
+                                    Image("Rectangle 11")
+                                        .overlay(
+                                            Text(socket.currentPhrase)
+                                                .font(projectFont(style: .extraBold, size: 20))
+                                        )
                                 }
-                                ColorPickerView(selectedColor: $viewModel.selectedColor, width: $HEIGHT)
-                                    .onChange(of: viewModel.selectedColor) {
-                                        newColor in
-                                        viewModel.currentLine.color =  newColor
-                                    }
-                                
-                                
-                            case .userIsGuessing:
-                                Image(uiImage: UIImage(data: socket.currentImage) ?? UIImage())
-                                    .resizable()
-                                    .frame(width: WIDTH, height: image_height)
-                                
-                                TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
-                                    .font(projectFont(style: .extraBold, size: 20))
-                                    .frame(width: WIDTH-48)
-                                    .shadow(radius: 5)
-                                    .padding(.horizontal, 24)
-                                    .padding(.vertical, image_height/15)
-                                    .background(Color.white)
+                                .frame(height: HEIGHT, alignment: .top)
                             }
+                            ColorPickerView(selectedColor: $viewModel.selectedColor, width: $HEIGHT)
+                                .onChange(of: viewModel.selectedColor) {
+                                    newColor in
+                                    viewModel.currentLine.color =  newColor
+                                }
+                            
+                            
+                        case .userIsGuessing:
+                            Image(uiImage: UIImage(data: socket.currentImage) ?? UIImage())
+                                .resizable()
+                                .frame(width: WIDTH, height: image_height)
+                            
+                            TextField("palpite", text: $viewModel.userGuess, prompt: Text("Digite seu palpite"))
+                                .font(projectFont(style: .extraBold, size: 20))
+                                .frame(width: WIDTH-48)
+                                .shadow(radius: 5)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, image_height/15)
+                                .background(Color.white)
                         }
                     }
-                    .onChange(of: viewModel.timeRemaining, perform: {
-                        _ in
-                        if viewModel.timerWentZero() {
-                            if socket.isHost {
-                                socket.socket.emit("host-timeout", "")
-                            }
-                        }
-                    })
                 }
-            )
-            .KeyboardAwarePadding(background: Color.gameRoomBackground)
+            }
+        )
+        .KeyboardAwarePadding(background: Color.gameRoomBackground)
         
-            .onChange(of: socket.timeout, perform: {timeout in
-                if timeout == true {
+        .onChange(of: socket.timeout) { timeout in
+            if timeout == true && !(socket.isHost) {
+                socket.timeout = false
+                if viewModel.gameStatus == .userIsDrawing {
+                    sendCanvas()
+                } else if viewModel.gameStatus == .userIsGuessing {
+                    socket.socket.emit("game", viewModel.userGuess)
+                    viewModel.userGuess = ""
+                }
+                viewModel.gameModeChange()
+            }
+        }
+        .onChange(of: socket.gameIsOver) { newValue in
+            if newValue == true {
+                coordinator.goTo(view: .threadsView)
+                coordinator.popView(view: .gameRoom)
+            }
+        }
+        .onChange(of: viewModel.timeRemaining) {
+            _ in
+            if viewModel.timerWentZero()
+                {
+                if socket.isHost {
+                    print("oi")
+                    socket.socket.emit("host-timeout", "")
                     if viewModel.gameStatus == .userIsDrawing {
                         sendCanvas()
                     } else if viewModel.gameStatus == .userIsGuessing {
@@ -95,15 +111,9 @@ struct RoomView: View {
                         viewModel.userGuess = ""
                     }
                     viewModel.gameModeChange()
-                    socket.timeout = false
-                }
-            }).onChange(of: socket.gameIsOver) { newValue in
-                if newValue == true {
-                    coordinator.goTo(view: .threadsView)
-                    coordinator.popView(view: .gameRoom)
                 }
             }
-        
+        }
     }
     
 }
@@ -147,20 +157,20 @@ extension RoomView {
                  
         )
         .background(Color.white)
-}
-
-func sendCanvas() {
+    }
     
-    let renderer = ImageRenderer(content: canva.frame(width: WIDTH, height: HEIGHT))
-    
-    if let uiImage = renderer.uiImage {
-        if let data = uiImage.pngData() {
-            let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
-            socket.socket.emit("game", strBase64)
-            viewModel.lines = []
+    func sendCanvas() {
+        
+        let renderer = ImageRenderer(content: canva.frame(width: WIDTH, height: HEIGHT))
+        
+        if let uiImage = renderer.uiImage {
+            if let data = uiImage.pngData() {
+                let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
+                socket.socket.emit("game", strBase64)
+                viewModel.lines = []
+            }
         }
     }
-}
 }
 
 struct RoomViewContent_Previews: PreviewProvider {

@@ -66,7 +66,7 @@ struct ThreadView: View {
                 }
                 Group {
                     VStack(alignment: .center) {
-                        Text("[placeholder: frase relativa ao personagem]")
+                        Text("")
                             .font(projectFont(style: .extraBold, size: 30))
                             .foregroundColor(Color.fontColor)
                             .offset(y: 128)

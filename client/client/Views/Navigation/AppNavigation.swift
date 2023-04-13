@@ -38,7 +38,7 @@ struct AppNavigation: View {
                 case .availableUsers:
                     AvailableUsers().navigationBarHidden(true)
                 case .winnersView:
-                    WinnersView()
+                    WinnersView().navigationBarHidden(true)
                 }
             }
     }

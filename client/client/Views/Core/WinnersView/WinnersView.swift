@@ -10,10 +10,21 @@ import SwiftUI
 
 struct WinnersView: View {
     @ObservedObject private var viewModel = WinnersViewModel()
-       
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var roomViewModel: RoomViewModel
+    @EnvironmentObject var socket: SocketViewModel
+
     var body: some View {
         ZStack {
-            PageBackground(backFunction: viewModel.teste, nextFunction: viewModel.teste)
+            PageBackground(backFunction: {
+                roomViewModel.reset()
+                socket.reset()
+                coordinator.gotoHomePage()
+            }, nextFunction: {
+                roomViewModel.reset()
+                socket.reset()
+                coordinator.gotoHomePage()
+            })
             VStack {
                 Text("Parabéns,")
                     .font(projectFont(style: .extraBold, size: 40))
