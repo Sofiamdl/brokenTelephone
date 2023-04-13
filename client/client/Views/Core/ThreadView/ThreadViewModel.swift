@@ -56,12 +56,11 @@ final class ThreadViewModel: ObservableObject {
         }
         
         semaphore.wait()
-        print(_threads)
         return _threads
     }
     
     func getThreadFromUser(user: String, completion: @escaping ([ThreadResponse]?) -> ()) {
-        let urlString = "https://6624-150-161-70-2.ngrok-free.app/thread/\(user)"
+        let urlString = "http://localhost:3001/thread/\(user)"
         
         let url = URL(string: urlString)
         

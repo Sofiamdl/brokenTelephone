@@ -22,7 +22,7 @@ struct ImagePhraseShown: View, Identifiable {
     var body: some View {
         isImage ?
         AnyView(ZStack {
-            Image(uiImage: UIImage(data: Data(info.utf8)) ?? UIImage())
+            Image(uiImage: UIImage(data: Data(base64Encoded: info, options: .ignoreUnknownCharacters)!) ?? UIImage())
                 .resizable()
             
                 .aspectRatio(contentMode: .fit)

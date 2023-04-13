@@ -31,17 +31,17 @@ struct ThreadView: View {
                                     Image("yellow-square")
                                 }
                             }
-//                            .offset(y: 180)
+                            .offset(y: 180)
                             VStack (alignment: .leading) {
                                 Text("Vote no melhor momento")
                                     .font(projectFont(style: .extraBold, size: 30))
                                     .foregroundColor(Color.fontColor)
                                 ForEach(threads, id: \.self) {thread in
-//                                    ImagePhraseShown(isImage: thread.type == "drawing", info: thread.data, isChosen: false)
-//                                            .offset(x: thread.type == "drawing" ? 0 : 0)
+                                    ImagePhraseShown(isImage: thread.type == "drawing", info: thread.data, isChosen: false)
+                                            .offset(x: thread.type == "drawing" ? 0 : 0)
                                 }
                             }
-//                            .offset(y: -100)
+                            .offset(y: -100)
                         }
                     }.frame(minWidth: 0, maxWidth: .infinity)
                 }
@@ -72,13 +72,7 @@ struct ThreadView: View {
                             }
                         }.tabViewStyle(PageTabViewStyle())
                     }.frame(minWidth: 0, maxWidth: .infinity)
-                    Button("GET THREADS") {
-                        Task {
-//                            let user = socket.users
-//                            let threads = await viewModel.returnThreads(user: user)
-//                            print("AQ", threads)
-                        }
-                    }
+                   
                 }
             }
         }.onAppear {
